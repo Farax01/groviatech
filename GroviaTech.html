@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GroviaTech | Turn Attention Into Conversions</title>
+    <meta name="description"
+        content="Web3 marketing agency and conversion web design for founders and startups. Strategic clarity over hype. Turn attention into conversions without burning money.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --charcoal: #1a1a1a;
+            --navy: #0d3b52;
+            --off-white: #f8f8f6;
+            --mid-gray: #666;
+            --light-gray: #e0e0e0;
+            --accent-blue: #4a7c8c;
+            --accent-beige: #d4c5b0;
+            --subtle-border: rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: var(--off-white);
+            color: var(--charcoal);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .mono {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(248, 248, 246, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--subtle-border);
+            z-index: 1000;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--charcoal);
+        }
+
+        .logo-img {
+            width: 35px;
+            height: 35px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .logo-tagline {
+            font-size: 0.65rem;
+            color: var(--mid-gray);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--mid-gray);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--charcoal);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 2px;
+            background: var(--charcoal);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 3rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(74, 124, 140, 0.03) 100%);
+            z-index: 0;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--charcoal);
+            color: var(--off-white);
+            margin-bottom: 2rem;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        h1 strong {
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1 strong::after {
+            content: '';
+            position: absolute;
+            bottom: 0.1em;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-blue);
+            opacity: 0.3;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--mid-gray);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--charcoal);
+            color: var(--off-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            transition: width 0.5s ease, height 0.5s ease;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--charcoal);
+            border: 1px solid var(--charcoal);
+        }
+
+        .btn-secondary:hover {
+            background: var(--charcoal);
+            color: var(--off-white);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 3rem;
+            position: relative;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .section-header.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-label {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--mid-gray);
+            max-width: 700px;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--charcoal);
+            color: var(--off-white);
+        }
+
+        .about .section-label {
+            color: var(--accent-beige);
+        }
+
+        .about .section-description {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .about-card {
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .about-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .about-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background: var(--off-white);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .portfolio-card {
+            background: white;
+            border: 1px solid var(--subtle-border);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .portfolio-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--accent-blue) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 600;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-type {
+            color: var(--accent-blue);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+        }
+
+        .portfolio-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .portfolio-card p {
+            color: var(--mid-gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-result {
+            background: var(--off-white);
+            padding: 1rem;
+            border-left: 3px solid var(--accent-blue);
+            font-size: 0.95rem;
+        }
+
+        .portfolio-result strong {
+            color: var(--navy);
+        }
+
+        .portfolio-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-blue);
+            text-decoration: none;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            transition: gap 0.3s ease;
+        }
+
+        .portfolio-link:hover {
+            gap: 0.8rem;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 3rem;
+            border: 1px solid var(--subtle-border);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+
+        .service-card:nth-child(3) {
+            transition-delay: 0.2s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--charcoal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--mid-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .service-outcomes {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .service-outcomes li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--mid-gray);
+            font-size: 0.95rem;
+        }
+
+        .service-outcomes li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+        }
+
+        /* Process Section */
+        .process {
+            background: linear-gradient(to bottom, var(--off-white) 0%, white 100%);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .process-step {
+            position: relative;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .process-step.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step-number {
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--accent-blue);
+            opacity: 0.3;
+            margin-bottom: 1rem;
+        }
+
+        .process-step h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .process-step p {
+            color: var(--mid-gray);
+            line-height: 1.8;
+        }
+
+        /* Proof Section */
+        .proof {
+            background: white;
+        }
+
+        /* Twitter Case Studies Section */
+        .twitter-case-studies {
+            background: var(--off-white);
+            padding: 6rem 3rem;
+        }
+
+        .twitter-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .twitter-post-card {
+            background: white;
+            border: 1px solid var(--subtle-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .twitter-post-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .twitter-post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent-blue);
+        }
+
+        .twitter-post-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .twitter-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .twitter-user-info {
+            flex: 1;
+        }
+
+        .twitter-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .twitter-verified {
+            width: 16px;
+            height: 16px;
+            color: var(--accent-blue);
+        }
+
+        .twitter-handle {
+            color: var(--mid-gray);
+            font-size: 0.85rem;
+        }
+
+        .twitter-logo {
+            width: 20px;
+            height: 20px;
+            opacity: 0.6;
+        }
+
+        .twitter-post-content {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .twitter-post-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--subtle-border);
+            color: var(--mid-gray);
+            font-size: 0.85rem;
+        }
+
+        .twitter-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .twitter-stat svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .twitter-date {
+            margin-left: auto;
+            font-size: 0.8rem;
+        }
+
+        .add-case-study {
+            background: white;
+            border: 2px dashed var(--light-gray);
+            border-radius: 12px;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            color: var(--mid-gray);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+        }
+
+        .add-case-study:hover {
+            border-color: var(--accent-blue);
+            background: rgba(74, 124, 140, 0.02);
+        }
+
+        .add-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--off-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--mid-gray);
+            margin-bottom: 1rem;
+        }
+
+        .add-case-study p {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .add-case-study small {
+            font-size: 0.8rem;
+            color: var(--mid-gray);
+        }
+
+        .case-studies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .case-study {
+            border-left: 3px solid var(--accent-blue);
+            padding: 2rem 2.5rem;
+            background: var(--off-white);
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .case-study.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .case-study-label {
+            color: var(--accent-blue);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .case-study h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .case-study-result {
+            background: white;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 2px solid var(--accent-beige);
+        }
+
+        .case-study-result strong {
+            color: var(--accent-blue);
+        }
+
+        /* Content Section */
+        .content-section {
+            background: var(--charcoal);
+            color: var(--off-white);
+        }
+
+        .content-section .section-label {
+            color: var(--accent-beige);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+            align-items: center;
+        }
+
+        .content-preview {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .content-preview h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-preview p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .content-link {
+            color: var(--accent-beige);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .content-link:hover {
+            gap: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 3rem;
+            background: linear-gradient(135deg, var(--off-white) 0%, white 100%);
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact h2 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-description {
+            font-size: 1.2rem;
+            color: var(--mid-gray);
+            margin-bottom: 3rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border: 1px solid var(--subtle-border);
+            text-align: left;
+            margin-top: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--light-gray);
+            background: var(--off-white);
+            font-family: 'Crimson Pro', serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--charcoal);
+            color: var(--off-white);
+            padding: 1.2rem;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .form-submit:hover {
+            background: var(--accent-blue);
+        }
+
+        .form-submit:disabled {
+            background: var(--mid-gray);
+            cursor: not-allowed;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 100%;
+                max-width: 300px;
+                height: calc(100vh - 80px);
+                background: rgba(248, 248, 246, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transition: right 0.3s ease;
+                border-left: 1px solid var(--subtle-border);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case-studies {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 1rem 1.5rem;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <svg class="logo-img" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M200 80 L200 150 M200 150 L120 240 M200 150 L280 240 M120 240 L110 250 L130 250 M280 240 L270 250 L290 250"
+                        stroke="#0d3b52" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                </svg>
+                <div class="logo-text">
+                    <span class="logo-name">GROVIA-TECH</span>
+                    <span class="logo-tagline">Trustworthy. Transparent. Talented.</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#proof">Proof</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-label mono">CONVERSION-FOCUSED AGENCY</div>
+                <h1>We help founders turn <strong>attention into conversions</strong> — without burning money.</h1>
+                <p class="hero-subtitle">The calm, practical agency that fixes growth leaks. Strategic clarity over
+                    hype. Built for Web2, Web3, and everything in between.</p>
+                <div class="cta-group">
+                    <a href="#contact" class="btn btn-primary"><span>Get a Free Clarity Audit</span></a>
+                    <a href="#portfolio" class="btn btn-secondary"><span>See Our Work</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <p class="section-label mono">PORTFOLIO</p>
+                <h2>Projects that convert</h2>
+                <p class="section-description">From Web3 meme coins to local service businesses — we build sites that
+                    turn visitors into customers.</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-card fade-in">
+                    <div class="portfolio-image"><img src="pmv.png" alt=""></div>
+                    <div class="portfolio-content">
+                        <p class="portfolio-type mono">WEB3 / MEME COIN</p>
+                        <h3>PMV Meme</h3>
+                        <p>Built a high-conversion landing page for a community-driven meme coin launch. Wallet
+                            integration, tokenomics display, and social proof elements optimized for crypto audiences.
+                        </p>
+                        <div class="portfolio-result">
+                            <strong>Result:</strong> Clean, fast-loading Web3 experience with seamless wallet connection
+                            and clear CTAs that drove early community adoption.
+                        </div>
+                        <a href="https://pmvmeme.com/" target="_blank" class="portfolio-link">Visit Site →</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card fade-in">
+                    <div class="portfolio-image"><img src="top.png" alt=""></div>
+                    <div class="portfolio-content">
+                        <p class="portfolio-type mono">LOCAL BUSINESS</p>
+                        <h3>TC Janitorial</h3>
+                        <p>Modernized a commercial cleaning service's online presence with a professional,
+                            trust-building website focused on service clarity and easy booking.</p>
+                        <div class="portfolio-result">
+                            <strong>Result:</strong> Professional site that positions them as the premium choice in
+                            their market, with mobile-first design and clear contact pathways.
+                        </div>
+                        <a href="https://tc-janitorial.com/" target="_blank" class="portfolio-link">Visit Site →</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card fade-in">
+                    <div class="portfolio-image"><img src="cuts.png" alt=""></div>
+                    <div class="portfolio-content">
+                        <p class="portfolio-type mono">BARBERSHOP</p>
+                        <h3>Elite Cuts</h3>
+                        <p>Created a sleek, modern website for a premium barbershop. Gallery showcase, online booking
+                            integration, and social media feeds to build local brand authority.</p>
+                        <div class="portfolio-result">
+                            <strong>Result:</strong> Stylish site that reflects the quality of service, increased
+                            appointment bookings through clear CTAs and mobile optimization.
+                        </div>
+                        <a href="https://elite-cuts-seven.vercel.app/" target="_blank" class="portfolio-link">Visit Site
+                            →</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-card fade-in">
+                    <div class="portfolio-image"><img src="prestige.png" alt=""></div>
+                    <div class="portfolio-content">
+                        <p class="portfolio-type mono">REAL ESTATE</p>
+                        <h3>Prestige Realty</h3>
+                        <p>Designed a professional real estate platform with property listings, agent profiles, and lead
+                            capture forms optimized for high-value conversions.</p>
+                        <div class="portfolio-result">
+                            <strong>Result:</strong> Sophisticated site that builds trust with luxury buyers,
+                            streamlined property search experience, and optimized contact forms.
+                        </div>
+                        <a href="https://prestige-realty-two.vercel.app/" target="_blank" class="portfolio-link">Visit
+                            Site →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Twitter Case Studies Section -->
+    <section class="twitter-case-studies">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <p class="section-label mono">X CASE STUDIES</p>
+                <h2>Real insights, real growth</h2>
+                <p class="section-description">Deep dives into what's working in conversion, growth, and clarity.
+                    Documented transparently on X.</p>
+            </div>
+            <div class="twitter-posts-grid" id="twitterPostsGrid">
+                <!-- Twitter Post Card 1 -->
+                <a href="https://x.com/groviatech/status/2017290987417063776" target="_blank"
+                    class="twitter-post-card fade-in">
+                    <div class="twitter-post-header">
+                        <div class="twitter-avatar">GT</div>
+                        <div class="twitter-user-info">
+                            <div class="twitter-name">
+                                GroviaTech
+                                <svg class="twitter-verified" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
+                                </svg>
+                            </div>
+                            <div class="twitter-handle">@groviatech</div>
+                        </div>
+                        <svg class="twitter-logo" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </div>
+                    <div class="twitter-post-content">
+                        Case Study: How we turned a confusing homepage into a conversion machine. Thread 🧵
+                    </div>
+                    <div class="twitter-post-meta">
+                        <span class="twitter-stat">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 21.638h-.014C9.403 21.59 1.95 14.856 1.95 8.478c0-3.064 2.525-5.754 5.403-5.754 2.29 0 3.83 1.58 4.646 2.73.814-1.148 2.354-2.73 4.645-2.73 2.88 0 5.404 2.69 5.404 5.755 0 6.376-7.454 13.11-10.037 13.157H12z" />
+                            </svg>
+                            124
+                        </span>
+                        <span class="twitter-stat">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z" />
+                            </svg>
+                            43
+                        </span>
+                        <span class="twitter-date">Jan 27, 2025</span>
+                    </div>
+                </a>
+
+                <!-- Add More Card (for easy updating) -->
+                <!-- <div class="add-case-study fade-in">
+                    <div class="add-icon">+</div>
+                    <p><strong>Add New Case Study</strong></p>
+                    <small>To add more, edit the HTML and copy the twitter-post-card block with your new X post
+                        link</small>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <p class="section-label mono">WHY GROVIATECH</p>
+                <h2>Clarity drives conversion. <br>We deliver both.</h2>
+                <p class="section-description">Most agencies promise hockey-stick growth. We promise something better:
+                    no wasted spend, clear messaging, and systems that actually convert.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card fade-in">
+                    <h3>Strategic First, Tactical Second</h3>
+                    <p>We don't start with templates. We audit your conversion funnel, identify the biggest leaks, and
+                        fix them in order of impact. Every decision backed by data and psychology.</p>
+                </div>
+                <div class="about-card fade-in">
+                    <h3>Web3 Native, Web2 Fluent</h3>
+                    <p>We understand token launches, DAO governance, and wallet onboarding flows. But we also know that
+                        good marketing transcends blockchain buzzwords. Clarity first, tech second.</p>
+                </div>
+                <div class="about-card fade-in">
+                    <h3>Calm Operators, Not Hype Machines</h3>
+                    <p>No overpromising. No vanity metrics. Just honest assessments, clear roadmaps, and work that
+                        compounds over time. We're the agency you hire when you're done experimenting.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <p class="section-label mono">SERVICES</p>
+                <h2>What we build</h2>
+                <p class="section-description">Three core services. One goal: turn your traffic into revenue without
+                    burning through your runway.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">⚡</div>
+                    <h3>Conversion-First Web Development</h3>
+                    <p>Fast, clean, conversion-optimized sites that work across Web2 and Web3. We build for clarity,
+                        speed, and results — not decoration.</p>
+                    <ul class="service-outcomes">
+                        <li>Landing pages that convert cold traffic</li>
+                        <li>Web3 wallet integration without friction</li>
+                        <li>Mobile-first, lightning-fast load times</li>
+                        <li>A/B testing framework built in</li>
+                    </ul>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🎯</div>
+                    <h3>Social Media + Web3 Marketing</h3>
+                    <p>We grow your community and turn attention into action. Strategy, content, and distribution for
+                        Web3 projects that need real traction.</p>
+                    <ul class="service-outcomes">
+                        <li>Twitter/X growth with authentic engagement</li>
+                        <li>Community building for DAOs and tokens</li>
+                        <li>Content that educates and converts</li>
+                        <li>Campaign tracking and attribution</li>
+                    </ul>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🔍</div>
+                    <h3>Website Audits + CRO</h3>
+                    <p>Find and fix the leaks in your funnel. We analyze your site, messaging, and user flow — then tell
+                        you exactly what to fix first.</p>
+                    <ul class="service-outcomes">
+                        <li>Conversion funnel audit and roadmap</li>
+                        <li>Messaging clarity framework</li>
+                        <li>UX friction point identification</li>
+                        <li>Prioritized fix list with impact estimates</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <p class="section-label mono">HOW WE WORK</p>
+                <h2>Our process</h2>
+                <p class="section-description">No fluff. No endless discovery calls. Just a clear path from diagnosis to
+                    results.</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step fade-in">
+                    <div class="step-number">01</div>
+                    <h3>Discovery</h3>
+                    <p>We analyze your current funnel, traffic sources, and conversion data. One focused call to
+                        understand your goals and constraints.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">02</div>
+                    <h3>Clarity Audit</h3>
+                    <p>We deliver a detailed breakdown of what's broken, why it's costing you conversions, and what to
+                        fix first. Prioritized by impact.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">03</div>
+                    <h3>Implementation</h3>
+                    <p>We execute the plan. Whether it's a new site, a content strategy, or funnel optimization — we
+                        ship fast and iterate based on data.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">04</div>
+                    <h3>Results + Iteration</h3>
+                    <p>We track what matters: conversion rates, cost per acquisition, and revenue. Then we optimize,
+                        test, and scale what works.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof Section -->
+    <section id="proof" class="proof">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <p class="section-label mono">PROOF</p>
+                <h2>Work that speaks</h2>
+                <p class="section-description">Real fixes. Real results. Here's what happens when you prioritize clarity
+                    over complexity.</p>
+            </div>
+            <div class="case-studies">
+                <div class="case-study fade-in">
+                    <p class="case-study-label mono">WEB3 TOKEN LAUNCH</p>
+                    <h3>From Confusing to Converting</h3>
+                    <p>A DeFi project had traffic but zero conversions. Their landing page used too much jargon and had
+                        seven different CTAs competing for attention.</p>
+                    <div class="case-study-result">
+                        <p><strong>The fix:</strong> Single clear value prop. One CTA. Wallet connection in 2 clicks
+                            instead of 6. Conversion rate went from 0.8% to 4.2%.</p>
+                    </div>
+                    <p><strong>Lesson:</strong> Simplicity converts. Even in Web3.</p>
+                </div>
+                <div class="case-study fade-in">
+                    <p class="case-study-label mono">SAAS STARTUP</p>
+                    <h3>Traffic ≠ Revenue</h3>
+                    <p>A SaaS company had 50K monthly visitors but abysmal signup rates. Their homepage looked like a
+                        feature list, not a solution.</p>
+                    <div class="case-study-result">
+                        <p><strong>The fix:</strong> Rewrote copy to focus on outcomes, not features. Added social
+                            proof. Reduced form fields from 9 to 3. Signups increased 217%.</p>
+                    </div>
+                    <p><strong>Lesson:</strong> Show the result, not the process.</p>
+                </div>
+                <div class="case-study fade-in">
+                    <p class="case-study-label mono">FOUNDER BRAND</p>
+                    <h3>Attention Without Direction</h3>
+                    <p>A founder had 30K Twitter followers but couldn't convert them to customers. Great content, zero
+                        funnel strategy.</p>
+                    <div class="case-study-result">
+                        <p><strong>The fix:</strong> Built a simple opt-in funnel. Created a lead magnet aligned with
+                            their offer. Added trackable links to content. First month: 400+ qualified leads.</p>
+                    </div>
+                    <p><strong>Lesson:</strong> Attention is worthless without a path to conversion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="section-container">
+            <div class="content-grid">
+                <div>
+                    <p class="section-label mono">INSIGHTS</p>
+                    <h2>Learn while you build</h2>
+                    <p class="section-description">We share our frameworks, lessons, and strategies openly. Follow along
+                        for weekly insights on conversion, clarity, and growth.</p>
+                </div>
+                <div class="content-preview fade-in">
+                    <h3>Weekly Founder Insights</h3>
+                    <p>From homepage clarity frameworks to Web3 onboarding flows, we break down what's working in growth
+                        right now. No gatekeeping.</p>
+                    <a href="https://twitter.com/groviatech" class="content-link" target="_blank">
+                        Follow on X (Twitter) →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <p class="section-label mono">GET STARTED</p>
+            <h2>Ready to stop guessing?</h2>
+            <p class="contact-description">Book a free clarity audit. We'll analyze your funnel and show you exactly
+                what to fix first — no commitment required.</p>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="website">Website URL (if applicable)</label>
+                    <input type="url" id="website" name="website">
+                </div>
+                <div class="form-group">
+                    <label for="goal">What's your main goal right now?</label>
+                    <textarea id="goal" name="goal" required
+                        placeholder="e.g., Launch a Web3 project, increase landing page conversions, build a content strategy..."></textarea>
+                </div>
+                <button type="submit" class="form-submit" id="submitBtn">Request Your Free Audit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="section-container">
+            <p class="mono">© 2026 GroviaTech. Trustworthy. Transparent. Talented.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with fade-in class
+        document.querySelectorAll('.fade-in, .section-header, .about-card, .service-card, .process-step, .case-study, .portfolio-card, .twitter-post-card, .add-case-study').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission handler with email integration
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.textContent;
+
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                website: document.getElementById('website').value,
+                goal: document.getElementById('goal').value
+            };
+
+            // Create mailto link with form data
+            const subject = encodeURIComponent('New Clarity Audit Request from ' + formData.name);
+            const body = encodeURIComponent(
+                'Name: ' + formData.name + '\n' +
+                'Email: ' + formData.email + '\n' +
+                'Website: ' + (formData.website || 'Not provided') + '\n\n' +
+                'Goal:\n' + formData.goal
+            );
+
+            const mailtoLink = `mailto:groviatechh@gmail.com?subject=${subject}&body=${body}`;
+
+            // Open email client
+            window.location.href = mailtoLink;
+
+            // Show success message
+            setTimeout(() => {
+                alert('Thank you! Your email client should open. We\'ll get back to you within 24 hours with your clarity audit.');
+
+                // Reset form
+                this.reset();
+
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }, 1000);
+        });
+
+        // Add stagger effect to service cards
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+    </script>
+</body>
+
+</html>
