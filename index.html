@@ -2,1600 +2,2550 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="grovia.jpg" type="image/x-icon">
-    <title>GroviaTech | Turn Attention Into Conversions</title>
-    <meta name="description"
-        content="Web3 marketing agency and conversion web design for founders and startups. Strategic clarity over hype. Turn attention into conversions without burning money.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
-        rel="stylesheet">
-    <style>
-        :root {
-            --charcoal: #1a1a1a;
-            --navy: #0d3b52;
-            --off-white: #f8f8f6;
-            --mid-gray: #666;
-            --light-gray: #e0e0e0;
-            --accent-blue: #4a7c8c;
-            --accent-beige: #d4c5b0;
-            --subtle-border: rgba(0, 0, 0, 0.08);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Crimson Pro', serif;
-            background: var(--off-white);
-            color: var(--charcoal);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        .mono {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(248, 248, 246, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--subtle-border);
-            z-index: 1000;
-            animation: slideDown 0.6s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.5rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-            color: var(--charcoal);
-        }
-
-        .logo-img {
-            width: 35px;
-            height: 35px;
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.2;
-        }
-
-        .logo-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--navy);
-        }
-
-        .logo-tagline {
-            font-size: 0.65rem;
-            color: var(--mid-gray);
-            letter-spacing: 0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--mid-gray);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--accent-blue);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--charcoal);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Mobile Menu Button */
-        .mobile-menu-btn {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .mobile-menu-btn span {
-            width: 25px;
-            height: 2px;
-            background: var(--charcoal);
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu-btn.active span:nth-child(1) {
-            transform: rotate(45deg) translate(7px, 7px);
-        }
-
-        .mobile-menu-btn.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-menu-btn.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 8rem 3rem 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(135deg, transparent 0%, rgba(74, 124, 140, 0.03) 100%);
-            z-index: 0;
-        }
-
-        .hero-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            animation: fadeInUp 0.8s ease-out 0.2s backwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-label {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: var(--charcoal);
-            color: var(--off-white);
-            margin-bottom: 2rem;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 400;
-            line-height: 1.15;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.5px;
-        }
-
-        h1 strong {
-            font-weight: 600;
-            position: relative;
-            display: inline-block;
-        }
-
-        h1 strong::after {
-            content: '';
-            position: absolute;
-            bottom: 0.1em;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--accent-blue);
-            opacity: 0.3;
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem;
-            color: var(--mid-gray);
-            margin-bottom: 3rem;
-            max-width: 600px;
-            line-height: 1.6;
-        }
-
-        .cta-group {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease-out 0.4s backwards;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: var(--charcoal);
-            color: var(--off-white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: var(--accent-blue);
-            transition: width 0.5s ease, height 0.5s ease;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-        }
-
-        .btn-primary:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .btn-primary span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--charcoal);
-            border: 1px solid var(--charcoal);
-        }
-
-        .btn-secondary:hover {
-            background: var(--charcoal);
-            color: var(--off-white);
-        }
-
-        /* Section Styles */
-        section {
-            padding: 6rem 3rem;
-            position: relative;
-        }
-
-        .section-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            margin-bottom: 4rem;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .section-header.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section-label {
-            color: var(--accent-blue);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.85rem;
-        }
-
-        h2 {
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            font-weight: 400;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.5px;
-        }
-
-        .section-description {
-            font-size: 1.2rem;
-            color: var(--mid-gray);
-            max-width: 700px;
-        }
-
-        /* About Section */
-        .about {
-            background: var(--charcoal);
-            color: var(--off-white);
-        }
-
-        .about .section-label {
-            color: var(--accent-beige);
-        }
-
-        .about .section-description {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .about-card {
-            padding: 2rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .about-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .about-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .about-card p {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.8;
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            background: var(--off-white);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 4rem;
-        }
-
-        .portfolio-card {
-            background: white;
-            border: 1px solid var(--subtle-border);
-            overflow: hidden;
-            transition: all 0.4s ease;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .portfolio-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .portfolio-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--accent-blue) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            font-weight: 600;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .portfolio-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .portfolio-content {
-            padding: 2rem;
-        }
-
-        .portfolio-type {
-            color: var(--accent-blue);
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 0.8rem;
-        }
-
-        .portfolio-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .portfolio-card p {
-            color: var(--mid-gray);
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-        }
-
-        .portfolio-result {
-            background: var(--off-white);
-            padding: 1rem;
-            border-left: 3px solid var(--accent-blue);
-            font-size: 0.95rem;
-        }
-
-        .portfolio-result strong {
-            color: var(--navy);
-        }
-
-        .portfolio-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent-blue);
-            text-decoration: none;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            transition: gap 0.3s ease;
-        }
-
-        .portfolio-link:hover {
-            gap: 0.8rem;
-        }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 3rem;
-            border: 1px solid var(--subtle-border);
-            transition: all 0.4s ease;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .service-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .service-card:nth-child(2) {
-            transition-delay: 0.1s;
-        }
-
-        .service-card:nth-child(3) {
-            transition-delay: 0.2s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-        }
-
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--charcoal);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-            font-size: 1.5rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .service-card p {
-            color: var(--mid-gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .service-outcomes {
-            list-style: none;
-            margin-top: 1.5rem;
-        }
-
-        .service-outcomes li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            color: var(--mid-gray);
-            font-size: 0.95rem;
-        }
-
-        .service-outcomes li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--accent-blue);
-        }
-
-        /* Process Section */
-        .process {
-            background: linear-gradient(to bottom, var(--off-white) 0%, white 100%);
-        }
-
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-            position: relative;
-        }
-
-        .process-step {
-            position: relative;
-            padding: 2rem;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .process-step.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .step-number {
-            font-size: 3rem;
-            font-weight: 300;
-            color: var(--accent-blue);
-            opacity: 0.3;
-            margin-bottom: 1rem;
-        }
-
-        .process-step h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .process-step p {
-            color: var(--mid-gray);
-            line-height: 1.8;
-        }
-
-        /* Proof Section */
-        .proof {
-            background: white;
-        }
-
-        /* Twitter Case Studies Section */
-        .twitter-case-studies {
-            background: var(--off-white);
-            padding: 6rem 3rem;
-        }
-
-        .twitter-posts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        .twitter-post-card {
-            background: white;
-            border: 1px solid var(--subtle-border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(30px);
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .twitter-post-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .twitter-post-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-color: var(--accent-blue);
-        }
-
-        .twitter-post-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .twitter-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--navy);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
-
-        .twitter-user-info {
-            flex: 1;
-        }
-
-        .twitter-name {
-            font-weight: 600;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .twitter-verified {
-            width: 16px;
-            height: 16px;
-            color: var(--accent-blue);
-        }
-
-        .twitter-handle {
-            color: var(--mid-gray);
-            font-size: 0.85rem;
-        }
-
-        .twitter-logo {
-            width: 20px;
-            height: 20px;
-            opacity: 0.6;
-        }
-
-        .twitter-post-content {
-            margin-bottom: 1rem;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        .twitter-post-meta {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--subtle-border);
-            color: var(--mid-gray);
-            font-size: 0.85rem;
-        }
-
-        .twitter-stat {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .twitter-stat svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .twitter-date {
-            margin-left: auto;
-            font-size: 0.8rem;
-        }
-
-        .add-case-study {
-            background: white;
-            border: 2px dashed var(--light-gray);
-            border-radius: 12px;
-            padding: 3rem 1.5rem;
-            text-align: center;
-            color: var(--mid-gray);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 250px;
-        }
-
-        .add-case-study:hover {
-            border-color: var(--accent-blue);
-            background: rgba(74, 124, 140, 0.02);
-        }
-
-        .add-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--off-white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: var(--mid-gray);
-            margin-bottom: 1rem;
-        }
-
-        .add-case-study p {
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .add-case-study small {
-            font-size: 0.8rem;
-            color: var(--mid-gray);
-        }
-
-        .case-studies {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .case-study {
-            border-left: 3px solid var(--accent-blue);
-            padding: 2rem 2.5rem;
-            background: var(--off-white);
-            opacity: 0;
-            transform: translateX(-30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .case-study.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .case-study-label {
-            color: var(--accent-blue);
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-        }
-
-        .case-study h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .case-study-result {
-            background: white;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-left: 2px solid var(--accent-beige);
-        }
-
-        .case-study-result strong {
-            color: var(--accent-blue);
-        }
-
-        /* Content Section */
-        .content-section {
-            background: var(--charcoal);
-            color: var(--off-white);
-        }
-
-        .content-section .section-label {
-            color: var(--accent-beige);
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-top: 4rem;
-            align-items: center;
-        }
-
-        .content-preview {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .content-preview h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .content-preview p {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .content-link {
-            color: var(--accent-beige);
-            text-decoration: none;
-            font-size: 0.95rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: gap 0.3s ease;
-        }
-
-        .content-link:hover {
-            gap: 1rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 8rem 3rem;
-            background: linear-gradient(135deg, var(--off-white) 0%, white 100%);
-        }
-
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact h2 {
-            margin-bottom: 1rem;
-        }
-
-        .contact-description {
-            font-size: 1.2rem;
-            color: var(--mid-gray);
-            margin-bottom: 3rem;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 3rem;
-            border: 1px solid var(--subtle-border);
-            text-align: left;
-            margin-top: 3rem;
-        }
-
-        .form-group {
-            margin-bottom: 2rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--charcoal);
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid var(--light-gray);
-            background: var(--off-white);
-            font-family: 'Crimson Pro', serif;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent-blue);
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .form-submit {
-            width: 100%;
-            background: var(--charcoal);
-            color: var(--off-white);
-            padding: 1.2rem;
-            border: none;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            font-family: 'Crimson Pro', serif;
-        }
-
-        .form-submit:hover {
-            background: var(--accent-blue);
-        }
-
-        .form-submit:disabled {
-            background: var(--mid-gray);
-            cursor: not-allowed;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--charcoal);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 3rem;
-            text-align: center;
-        }
-
-        footer p {
-            font-size: 0.9rem;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 968px) {
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                right: -100%;
-                width: 100%;
-                max-width: 300px;
-                height: calc(100vh - 80px);
-                background: rgba(248, 248, 246, 0.98);
-                backdrop-filter: blur(10px);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1.5rem;
-                transition: right 0.3s ease;
-                border-left: 1px solid var(--subtle-border);
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .mobile-menu-btn {
-                display: flex;
-            }
-
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .case-studies {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-container {
-                padding: 1rem 1.5rem;
-            }
-
-            .hero {
-                padding: 6rem 1.5rem 3rem;
-            }
-
-            section {
-                padding: 4rem 1.5rem;
-            }
-
-            h1 {
-                font-size: 2.2rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            .cta-group {
-                flex-direction: column;
-            }
-
-            .btn {
-                text-align: center;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-form {
-                padding: 2rem;
-            }
-
-            .process-steps {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="grovia.jpg" type="image/x-icon">
+  <title>GroviaTech | High-Converting Websites for Founders & Startups</title>
+  <meta name="description"
+    content="GroviaTech is a digital agency that designs and builds high-converting websites for founders, startups, and growing businesses. Clean, fast, and built to turn visitors into customers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --midnight: #0A2540;
+      --electric: #2563EB;
+      --bone: #FAFAF8;
+      --slate: #64748B;
+      --charcoal: #111827;
+      --electric-light: rgba(37, 99, 235, 0.08);
+      --electric-mid: rgba(37, 99, 235, 0.15);
+      --border: rgba(10, 37, 64, 0.1);
+      --border-light: rgba(255, 255, 255, 0.1);
+      --white: #ffffff;
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bone);
+      color: var(--charcoal);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(250, 250, 248, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      animation: slideDown .5s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .nav-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 1.25rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      /* background: var(--midnight); */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .logo-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--midnight);
+      letter-spacing: .5px;
+    }
+
+    .logo-sub {
+      display: block;
+      font-size: .6rem;
+      color: var(--slate);
+      letter-spacing: 1px;
+      margin-top: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: .88rem;
+      font-weight: 500;
+      color: var(--slate);
+      text-decoration: none;
+      transition: color .25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--charcoal);
+    }
+
+    .nav-cta {
+      background: var(--electric);
+      color: #fff;
+      padding: .6rem 1.4rem;
+      font-family: 'Syne', sans-serif;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .5px;
+      text-decoration: none;
+      transition: background .25s, transform .2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--midnight);
+      transform: translateY(-1px);
+    }
+
+    .mobile-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .mobile-btn span {
+      width: 22px;
+      height: 2px;
+      background: var(--charcoal);
+      transition: all .3s;
+      display: block;
+    }
+
+    .mobile-btn.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .mobile-btn.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-btn.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 9rem 3rem 5rem;
+      background: var(--midnight);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(37, 99, 235, .07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, .07) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(37, 99, 235, .18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .4rem 1rem;
+      background: rgba(37, 99, 235, .15);
+      border: 1px solid rgba(37, 99, 235, .3);
+      color: #93c5fd;
+      font-family: 'Syne', sans-serif;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      background: #60a5fa;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: .4;
+      }
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: #fff;
+      letter-spacing: -1px;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: #60a5fa;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, .65);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: .9rem 2rem;
+      font-family: 'Syne', sans-serif;
+      font-size: .88rem;
+      font-weight: 700;
+      letter-spacing: .3px;
+      text-decoration: none;
+      transition: all .25s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--electric);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, .35);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: rgba(255, 255, 255, .8);
+      border: 1px solid rgba(255, 255, 255, .2);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, .07);
+      color: #fff;
+    }
+
+    .btn-dark {
+      background: var(--midnight);
+      color: #fff;
+    }
+
+    .btn-dark:hover {
+      background: #0d2f4e;
+      transform: translateY(-2px);
+    }
+
+    .trust-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .trust-item svg {
+      width: 14px;
+      height: 14px;
+      color: #60a5fa;
+      flex-shrink: 0;
+    }
+
+    .hero-right {
+      position: relative;
+    }
+
+    .hero-card-stack {
+      position: relative;
+      height: 440px;
+    }
+
+    .stat-card {
+      position: absolute;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .1);
+      backdrop-filter: blur(12px);
+      padding: 1.5rem 2rem;
+      transition: transform .3s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .stat-card-1 {
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .stat-card-2 {
+      top: 180px;
+      left: 20px;
+      right: 20px;
+    }
+
+    .stat-card-3 {
+      top: 320px;
+      left: 40px;
+      right: 0;
+    }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #60a5fa;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: .85rem;
+      color: rgba(255, 255, 255, .55);
+      margin-top: .3rem;
+    }
+
+    /* ── SECTIONS GENERIC ── */
+    section {
+      padding: 6rem 3rem;
+    }
+
+    .section-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+    }
+
+    .section-top {
+      margin-bottom: 4rem;
+    }
+
+    .section-top .label {
+      color: var(--electric);
+      margin-bottom: .75rem;
+      display: block;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.9rem, 3.5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -.5px;
+      color: var(--charcoal);
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--slate);
+      max-width: 640px;
+      margin-top: 1rem;
+      line-height: 1.8;
+    }
+
+    /* fade-in */
+    .fi {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .fi.show {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── PORTFOLIO ── */
+    .portfolio {
+      background: var(--bone);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 4rem;
+    }
+
+    .pcard {
+      background: var(--white);
+      overflow: hidden;
+      transition: transform .35s;
+      position: relative;
+    }
+
+    .pcard:hover {
+      transform: translateY(-6px);
+      z-index: 2;
+      box-shadow: 0 24px 48px rgba(10, 37, 64, .12);
+    }
+
+    .pcard-img {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(135deg, var(--midnight) 0%, #0e3a6e 100%);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .pcard-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      transition: transform .5s;
+    }
+
+    .pcard:hover .pcard-img img {
+      transform: scale(1.04);
+    }
+
+    .pcard-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--electric);
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: .3rem .7rem;
+    }
+
+    .concept-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(0, 0, 0, .6);
+      color: rgba(255, 255, 255, .8);
+      font-size: .65rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: .25rem .6rem;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+    }
+
+    .pcard-body {
+      padding: 2rem;
+    }
+
+    .pcard-body h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--charcoal);
+    }
+
+    .pcard-detail {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .pcard-detail-item {}
+
+    .pcard-detail-item .di-label {
+      font-family: 'Syne', sans-serif;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--electric);
+      margin-bottom: .3rem;
+    }
+
+    .pcard-detail-item p {
+      font-size: .88rem;
+      color: var(--slate);
+      line-height: 1.6;
+    }
+
+    .pcard-result {
+      background: var(--electric-light);
+      border-left: 3px solid var(--electric);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .pcard-result .di-label {
+      font-family: 'Syne', sans-serif;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--electric);
+      margin-bottom: .3rem;
+    }
+
+    .pcard-result p {
+      font-size: .88rem;
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+
+    .pcard-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      color: var(--electric);
+      text-decoration: none;
+      font-family: 'Syne', sans-serif;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .3px;
+      transition: gap .25s;
+    }
+
+    .pcard-link:hover {
+      gap: .7rem;
+    }
+
+    /* ── TWITTER / CASE STUDIES ── */
+    .x-section {
+      background: var(--charcoal);
+    }
+
+    .x-section .label {
+      color: #60a5fa;
+    }
+
+    .x-section h2 {
+      color: #fff;
+    }
+
+    .x-section .section-desc {
+      color: rgba(255, 255, 255, .55);
+    }
+
+    .x-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .x-card {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .08);
+      padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all .3s;
+      border-radius: 2px;
+    }
+
+    .x-card:hover {
+      background: rgba(255, 255, 255, .07);
+      border-color: rgba(37, 99, 235, .4);
+      transform: translateY(-4px);
+    }
+
+    .x-head {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1rem;
+    }
+
+    .x-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--electric);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .x-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: .9rem;
+      color: #fff;
+    }
+
+    .x-handle {
+      font-size: .8rem;
+      color: rgba(255, 255, 255, .4);
+    }
+
+    .x-logo {
+      margin-left: auto;
+      width: 18px;
+      height: 18px;
+      opacity: .5;
+    }
+
+    .x-body {
+      font-size: .9rem;
+      color: rgba(255, 255, 255, .75);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    .x-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, .07);
+      font-size: .78rem;
+      color: rgba(255, 255, 255, .35);
+    }
+
+    .x-stat {
+      display: flex;
+      align-items: center;
+      gap: .3rem;
+    }
+
+    .x-stat svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .x-date {
+      margin-left: auto;
+    }
+
+    /* ── WHY / OFFER ── */
+    .why {
+      background: var(--midnight);
+    }
+
+    .why .label {
+      color: #60a5fa;
+    }
+
+    .why h2 {
+      color: #fff;
+    }
+
+    .why .section-desc {
+      color: rgba(255, 255, 255, .55);
+    }
+
+    .offer-box {
+      background: rgba(37, 99, 235, .1);
+      border: 1px solid rgba(37, 99, 235, .25);
+      padding: 2.5rem 3rem;
+      margin: 3rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .offer-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--electric);
+    }
+
+    .offer-headline {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    .offer-headline span {
+      color: #60a5fa;
+    }
+
+    .offer-body {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, .65);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      max-width: 700px;
+    }
+
+    .offer-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .6rem .5rem;
+    }
+
+    .offer-list li {
+      font-size: .9rem;
+      color: rgba(255, 255, 255, .7);
+      display: flex;
+      align-items: flex-start;
+      gap: .5rem;
+    }
+
+    .offer-list li::before {
+      content: '→';
+      color: #60a5fa;
+      flex-shrink: 0;
+    }
+
+    .why-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      margin-top: 3rem;
+    }
+
+    .why-card {
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid rgba(255, 255, 255, .07);
+      padding: 2.5rem 2rem;
+      transition: background .3s;
+    }
+
+    .why-card:hover {
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .why-card-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(37, 99, 235, .15);
+      border: 1px solid rgba(37, 99, 235, .25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .why-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: .75rem;
+    }
+
+    .why-card p {
+      font-size: .9rem;
+      color: rgba(255, 255, 255, .5);
+      line-height: 1.8;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      background: var(--bone);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      margin-top: 4rem;
+    }
+
+    .svc {
+      background: var(--white);
+      padding: 3rem 2.5rem;
+      border: 1px solid var(--border);
+      transition: all .3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .svc::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--electric);
+      transition: width .4s;
+    }
+
+    .svc:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(10, 37, 64, .09);
+    }
+
+    .svc:hover::after {
+      width: 100%;
+    }
+
+    .svc-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--electric);
+      opacity: .12;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .svc h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .svc p {
+      font-size: .9rem;
+      color: var(--slate);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .svc-list {
+      list-style: none;
+    }
+
+    .svc-list li {
+      padding: .4rem 0 .4rem 1.25rem;
+      position: relative;
+      font-size: .85rem;
+      color: var(--slate);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .svc-list li:last-child {
+      border-bottom: none;
+    }
+
+    .svc-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--electric);
+    }
+
+    /* ── PROCESS ── */
+    .process {
+      background: var(--charcoal);
+    }
+
+    .process .label {
+      color: #60a5fa;
+    }
+
+    .process h2 {
+      color: #fff;
+    }
+
+    .process .section-desc {
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 4rem;
+      position: relative;
+    }
+
+    .process-grid::before {
+      content: '';
+      position: absolute;
+      top: 2rem;
+      left: calc(12.5%);
+      right: calc(12.5%);
+      height: 1px;
+      background: rgba(255, 255, 255, .1);
+    }
+
+    .pstep {
+      padding: 0 2rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .pstep-dot {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--electric);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: .8rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 auto 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pstep h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: .75rem;
+    }
+
+    .pstep p {
+      font-size: .85rem;
+      color: rgba(255, 255, 255, .45);
+      line-height: 1.75;
+    }
+
+    /* ── PROOF ── */
+    .proof {
+      background: var(--bone);
+    }
+
+    .proof-disclaimer {
+      display: inline-block;
+      font-size: .8rem;
+      color: var(--slate);
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: .5rem 1rem;
+      margin-bottom: 3rem;
+      font-style: italic;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .proof-card {
+      background: var(--white);
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s;
+    }
+
+    .proof-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(10, 37, 64, .1);
+    }
+
+    .proof-card::before {
+      content: '"';
+      position: absolute;
+      top: -1rem;
+      right: 1.5rem;
+      font-family: 'Syne', sans-serif;
+      font-size: 8rem;
+      font-weight: 800;
+      color: var(--electric);
+      opacity: .06;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .proof-industry {
+      display: inline-block;
+      font-family: 'Syne', sans-serif;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--electric);
+      margin-bottom: 1.25rem;
+      padding: .25rem .75rem;
+      border: 1px solid rgba(37, 99, 235, .2);
+    }
+
+    .proof-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .proof-context {
+      font-size: .82rem;
+      color: var(--slate);
+      font-style: italic;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .proof-card p {
+      font-size: .9rem;
+      color: var(--slate);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    .proof-fix {
+      background: var(--electric-light);
+      border-left: 3px solid var(--electric);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+
+    .proof-fix p {
+      font-size: .85rem;
+      color: var(--charcoal);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .proof-fix strong {
+      color: var(--electric);
+    }
+
+    .proof-lesson {
+      font-family: 'Syne', sans-serif;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--midnight);
+      letter-spacing: .3px;
+    }
+
+    /* ── TEAM ── */
+    .team {
+      background: var(--midnight);
+    }
+
+    .team .label {
+      color: #60a5fa;
+    }
+
+    .team h2 {
+      color: #fff;
+    }
+
+    .team .section-desc {
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 4rem;
+    }
+
+    .tcard {
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid rgba(255, 255, 255, .07);
+      overflow: hidden;
+      transition: all .3s;
+    }
+
+    .tcard:hover {
+      background: rgba(255, 255, 255, .06);
+      transform: translateY(-4px);
+    }
+
+    .tcard-img {
+      width: 100%;
+      height: 260px;
+      background: linear-gradient(135deg, rgba(37, 99, 235, .2) 0%, rgba(10, 37, 64, .8) 100%);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .tcard-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .tcard-img-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, .15);
+    }
+
+    .tcard-role {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: .4rem 1rem;
+      background: var(--electric);
+      font-family: 'Syne', sans-serif;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .tcard-body {
+      padding: 1.75rem 2rem;
+    }
+
+    .tcard-body h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: .75rem;
+    }
+
+    .tcard-body p {
+      font-size: .88rem;
+      color: rgba(255, 255, 255, .5);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    .tcard-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+
+    .tcard-tag {
+      font-family: 'Syne', sans-serif;
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .5px;
+      padding: .2rem .6rem;
+      background: rgba(37, 99, 235, .12);
+      border: 1px solid rgba(37, 99, 235, .2);
+      color: #93c5fd;
+    }
+
+    /* ── INSIGHTS ── */
+    .insights {
+      background: var(--bone);
+    }
+
+    .insights-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .insights-right {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 3rem;
+    }
+
+    .insights-right h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .insights-right p {
+      font-size: .95rem;
+      color: var(--slate);
+      line-height: 1.8;
+      margin-bottom: 1.75rem;
+    }
+
+    .insights-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--electric);
+      text-decoration: none;
+      font-family: 'Syne', sans-serif;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .3px;
+      transition: gap .25s;
+    }
+
+    .insights-link:hover {
+      gap: .85rem;
+    }
+
+    /* ── CONTACT ── */
+    .contact {
+      background: var(--charcoal);
+      padding: 8rem 3rem;
+    }
+
+    .contact .label {
+      color: #60a5fa;
+    }
+
+    .contact-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contact h2 {
+      font-family: 'Syne', sans-serif;
+      color: #fff;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -.5px;
+      margin: .75rem 0 1rem;
+    }
+
+    .contact-sub {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, .5);
+      margin-bottom: 3rem;
+    }
+
+    .cform {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .08);
+      padding: 3rem;
+    }
+
+    .fg {
+      margin-bottom: 1.75rem;
+    }
+
+    .fg label {
+      display: block;
+      margin-bottom: .5rem;
+      font-family: 'Syne', sans-serif;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .55);
+    }
+
+    .fg input,
+    .fg textarea,
+    .fg select {
+      width: 100%;
+      padding: .9rem 1rem;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .1);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem;
+      transition: border-color .25s;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .fg input:focus,
+    .fg textarea:focus,
+    .fg select:focus {
+      border-color: var(--electric);
+    }
+
+    .fg input::placeholder,
+    .fg textarea::placeholder {
+      color: rgba(255, 255, 255, .25);
+    }
+
+    .fg textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .fg select option {
+      background: var(--charcoal);
+      color: #fff;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 1.1rem;
+      background: var(--electric);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-family: 'Syne', sans-serif;
+      font-size: .95rem;
+      font-weight: 700;
+      letter-spacing: .5px;
+      transition: all .25s;
+    }
+
+    .form-submit:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, .3);
+    }
+
+    .form-submit:disabled {
+      background: rgba(255, 255, 255, .15);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .form-note {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: .8rem;
+      color: rgba(255, 255, 255, .3);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--midnight);
+      border-top: 1px solid rgba(255, 255, 255, .06);
+      padding: 4rem 3rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1360px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 4rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, .06);
+    }
+
+    .footer-brand {}
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-logo-box {
+      width: 32px;
+      height: 32px;
+      background: var(--electric);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-logo-box svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .footer-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      color: #fff;
+      font-size: .95rem;
+    }
+
+    .footer-about {
+      font-size: .85rem;
+      color: rgba(255, 255, 255, .4);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      max-width: 280px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: .75rem;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, .5);
+      text-decoration: none;
+      transition: all .25s;
+      font-size: .85rem;
+    }
+
+    .social-link:hover {
+      background: var(--electric);
+      border-color: var(--electric);
+      color: #fff;
+    }
+
+    .social-link svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .footer-col h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .3);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: .7rem;
+    }
+
+    .footer-col ul li a {
+      font-size: .85rem;
+      color: rgba(255, 255, 255, .45);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .footer-col ul li a:hover {
+      color: #fff;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+      margin-bottom: .9rem;
+    }
+
+    .footer-contact-item svg {
+      width: 14px;
+      height: 14px;
+      color: var(--electric);
+      flex-shrink: 0;
+      margin-top: .25rem;
+    }
+
+    .footer-contact-item a,
+    .footer-contact-item span {
+      font-size: .83rem;
+      color: rgba(255, 255, 255, .45);
+      text-decoration: none;
+      transition: color .2s;
+      line-height: 1.5;
+    }
+
+    .footer-contact-item a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      font-size: .8rem;
+      color: rgba(255, 255, 255, .25);
+    }
+
+    .footer-tagline {
+      font-family: 'Syne', sans-serif;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .2);
+    }
+
+    /* ── TOAST / SUCCESS ── */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #10b981;
+      color: #fff;
+      padding: 1rem 1.5rem;
+      font-family: 'Syne', sans-serif;
+      font-size: .85rem;
+      font-weight: 600;
+      z-index: 9999;
+      transform: translateY(80px);
+      opacity: 0;
+      transition: all .35s;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-right {
+        display: none;
+      }
+
+      .why-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .proof-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .insights-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 4rem 1.5rem;
+      }
+
+      .nav-inner {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-links,
+      .nav-cta-desktop {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 260px;
+        height: calc(100vh - 70px);
+        background: rgba(250, 250, 248, .98);
+        backdrop-filter: blur(16px);
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+        gap: 1.5rem;
+        transition: right .3s;
+        border-left: 1px solid var(--border);
+      }
+
+      .nav-links.open {
+        right: 0;
+      }
+
+      .mobile-btn {
+        display: flex;
+      }
+
+      .hero {
+        padding: 7rem 1.5rem 3rem;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        text-align: center;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .process-grid::before {
+        display: none;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .offer-list {
+        grid-template-columns: 1fr;
+      }
+
+      .pcard-detail {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <svg class="logo-img" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M200 80 L200 150 M200 150 L120 240 M200 150 L280 240 M120 240 L110 250 L130 250 M280 240 L270 250 L290 250"
-                        stroke="#0d3b52" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-                </svg>
-                <div class="logo-text">
-                    <span class="logo-name">GROVIA-TECH</span>
-                    <span class="logo-tagline">Trustworthy. Transparent. Talented.</span>
-                </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <!-- <a href="#" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 8 L20 18 M20 18 L12 28 M20 18 L28 28 M12 28 L10 30 L14 30 M28 28 L26 30 L30 30" stroke="white"
+              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <div>
+          <span class="logo-name">GROVIA-TECH</span>
+          <span class="logo-sub">Trustworthy · Transparent · Talented</span>
+        </div>
+      </a> -->
+      <a href="#" class="logo">
+        <div class="logo-icon"><svg class="logo-img" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <path d="M200 80 L200 150 M200 150 L120 240 M200 150 L280 240 M120 240 L110 250 L130 250 M280 240 L270 250 L290 250"
+            stroke="#0d3b52" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+        </svg></div>
+        <div class="logo-text">
+          <span class="logo-name">GROVIA-TECH</span>
+          <span class="logo-sub">Trustworthy. Transparent. Talented.</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#proof">Proof</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Get a Free Audit</a>
+      <button class="mobile-btn" id="mobileBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          <span class="label">Conversion-Focused Agency</span>
+        </div>
+        <h1>We help founders turn <em>attention</em> into conversions.</h1>
+        <p class="hero-sub">We design and build websites for founders and startups that turn visitors into leads, users,
+          and customers. No hype. No bloated timelines. Just work that performs.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Get a Free Clarity Audit</a>
+          <a href="#portfolio" class="btn btn-ghost">See Our Work</a>
+        </div>
+        <div class="trust-bar">
+          <div class="trust-item">
+            <svg viewBox="0 0 16 16" fill="none">
+              <path d="M2 8l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            Fast Delivery
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 16 16" fill="none">
+              <path d="M2 8l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            Mobile-First
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 16 16" fill="none">
+              <path d="M2 8l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            SEO Ready
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 16 16" fill="none">
+              <path d="M2 8l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            Conversion-Optimized
+          </div>
+          <div class="trust-item">
+            <svg viewBox="0 0 16 16" fill="none">
+              <path d="M2 8l4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            Transparent Process
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-card-stack">
+          <div class="stat-card stat-card-1 fi">
+            <div class="stat-num">4.2×</div>
+            <div class="stat-label">Average conversion rate improvement across client sites</div>
+          </div>
+          <div class="stat-card stat-card-2 fi">
+            <div class="stat-num">48hr</div>
+            <div class="stat-label">Average turnaround on clarity audits — no waiting weeks</div>
+          </div>
+          <div class="stat-card stat-card-3 fi">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Projects delivered with transparent timelines & communication</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="portfolio">
+    <div class="section-inner">
+      <div class="section-top fi">
+        <span class="label">Portfolio</span>
+        <h2>Projects that convert</h2>
+        <p class="section-desc">From Web3 launches to local service businesses — every project is built around one
+          question: is this driving results?</p>
+      </div>
+
+      <div class="portfolio-grid">
+        <!-- PMV Meme -->
+        <div class="pcard fi">
+          <div class="pcard-img">
+            <img src="pmv.png" alt="PMV Meme project screenshot">
+            <span class="pcard-badge">WEB3 / MEME COIN</span>
+          </div>
+          <div class="pcard-body">
+            <h3>PMV Meme — $PMV on Solana</h3>
+            <div class="pcard-detail">
+              <div class="pcard-detail-item">
+                <div class="di-label">The Problem</div>
+                <p>Community-driven meme coin launch needed a site that could convert cold crypto traffic fast — wallet
+                  friction and unclear tokenomics were killing adoption.</p>
+              </div>
+              <div class="pcard-detail-item">
+                <div class="di-label">What We Built</div>
+                <p>High-conversion landing page with one-click wallet integration, tokenomics display, and social proof
+                  sections optimized for crypto-native audiences.</p>
+              </div>
+            </div>
+            <div class="pcard-result">
+              <div class="di-label">Result</div>
+              <p>Clean, fast-loading Web3 experience with seamless wallet connection and clear CTAs that drove early
+                community adoption from day one.</p>
+            </div>
+            <a href="https://pmvmeme.com/" target="_blank" class="pcard-link">Visit Site →</a>
+          </div>
+        </div>
+
+        <!-- TC Janitorial -->
+        <div class="pcard fi">
+          <div class="pcard-img">
+            <img src="top.png" alt="TC Janitorial project screenshot">
+            <span class="pcard-badge">LOCAL BUSINESS</span>
+          </div>
+          <div class="pcard-body">
+            <h3>TC Janitorial — Commercial Cleaning</h3>
+            <div class="pcard-detail">
+              <div class="pcard-detail-item">
+                <div class="di-label">The Problem</div>
+                <p>Established cleaning business with no credible digital presence. Prospects couldn't verify
+                  legitimacy, which was costing them commercial contracts.</p>
+              </div>
+              <div class="pcard-detail-item">
+                <div class="di-label">What We Built</div>
+                <p>Professional, trust-first website with service clarity, easy booking pathways, and mobile-first
+                  design that positions them as the premium choice.</p>
+              </div>
+            </div>
+            <div class="pcard-result">
+              <div class="di-label">Result</div>
+              <p>A site that credibly competes with established cleaning brands — with clear contact pathways and a
+                mobile experience that works on every device.</p>
+            </div>
+            <a href="https://tc-janitorial.com/" target="_blank" class="pcard-link">Visit Site →</a>
+          </div>
+        </div>
+
+        <!-- Elite Cuts -->
+        <div class="pcard fi">
+          <div class="pcard-img">
+            <img src="cuts.png" alt="Elite Cuts concept project">
+            <span class="pcard-badge">BARBERSHOP</span>
+            <span class="concept-badge">CONCEPT</span>
+          </div>
+          <div class="pcard-body">
+            <h3>Elite Cuts — Premium Barbershop</h3>
+            <div class="pcard-detail">
+              <div class="pcard-detail-item">
+                <div class="di-label">The Brief</div>
+                <p>Design a digital presence that reflects the premium quality of a high-end barbershop and drives
+                  appointment bookings through the site.</p>
+              </div>
+              <div class="pcard-detail-item">
+                <div class="di-label">What We Built</div>
+                <p>Sleek, modern site with gallery showcase, online booking integration, and social media feeds to build
+                  local brand authority.</p>
+              </div>
+            </div>
+            <div class="pcard-result">
+              <div class="di-label">Result</div>
+              <p>A stylish site that reflects service quality, with clear CTAs and mobile optimization. Built as a
+                concept to demonstrate local business capability.</p>
+            </div>
+            <a href="https://elite-cuts-seven.vercel.app/" target="_blank" class="pcard-link">View Concept →</a>
+          </div>
+        </div>
+
+        <!-- Prestige Realty -->
+        <div class="pcard fi">
+          <div class="pcard-img">
+            <img src="prestige.png" alt="Prestige Realty concept project">
+            <span class="pcard-badge">REAL ESTATE</span>
+            <span class="concept-badge">CONCEPT</span>
+          </div>
+          <div class="pcard-body">
+            <h3>Prestige Realty — Property Platform</h3>
+            <div class="pcard-detail">
+              <div class="pcard-detail-item">
+                <div class="di-label">The Brief</div>
+                <p>Build a sophisticated real estate platform that earns trust with high-value buyers and generates
+                  qualified leads through contact forms.</p>
+              </div>
+              <div class="pcard-detail-item">
+                <div class="di-label">What We Built</div>
+                <p>Professional platform with property listings, agent profiles, and lead capture forms optimized for
+                  high-value conversions and luxury positioning.</p>
+              </div>
+            </div>
+            <div class="pcard-result">
+              <div class="di-label">Result</div>
+              <p>A sophisticated site that builds trust with luxury buyers, with streamlined property search and
+                optimized contact forms. Concept project showcasing real estate capability.</p>
+            </div>
+            <a href="https://prestige-realty-two.vercel.app/" target="_blank" class="pcard-link">View Concept →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- X CASE STUDIES -->
+  <section class="x-section">
+    <div class="section-inner">
+      <div class="section-top fi">
+        <span class="label">X Case Studies</span>
+        <h2>Real insights, real growth</h2>
+        <p class="section-desc">Deep dives into what's working in conversion, growth, and clarity. Documented
+          transparently on X.</p>
+      </div>
+      <div class="x-grid">
+        <a href="https://x.com/groviatech/status/2017290987417063776" target="_blank" class="x-card fi">
+          <div class="x-head">
+            <div class="x-avatar">GT</div>
+            <div>
+              <div class="x-name">GroviaTech</div>
+              <div class="x-handle">@groviatech</div>
+            </div>
+            <svg class="x-logo" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </div>
+          <div class="x-body">Case Study: How we turned a confusing homepage into a conversion machine. Thread 🧵</div>
+          <div class="x-meta">
+            <span class="x-stat">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 21.638h-.014C9.403 21.59 1.95 14.856 1.95 8.478c0-3.064 2.525-5.754 5.403-5.754 2.29 0 3.83 1.58 4.646 2.73.814-1.148 2.354-2.73 4.645-2.73 2.88 0 5.404 2.69 5.404 5.755 0 6.376-7.454 13.11-10.037 13.157H12z" />
+              </svg>
+              124
+            </span>
+            <span class="x-stat">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z" />
+              </svg>
+              43
+            </span>
+            <span class="x-date">Jan 27, 2025</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY GROVIATECH / OFFER -->
+  <section class="why">
+    <div class="section-inner">
+      <div class="section-top fi">
+        <span class="label">Why GroviaTech</span>
+        <h2>The offer most agencies won't make.</h2>
+        <p class="section-desc">Most agencies sell you a website. We sell you a conversion system — built, measured, and
+          optimized to grow your business.</p>
+      </div>
+
+      <div class="offer-box fi">
+        <div class="offer-headline">Your website in <span>21 days</span> — or your first revision is free.</div>
+        <div class="offer-body">
+          We know founders don't have time to babysit a build for 3 months. Every project we take on ships in 21 days or
+          less. You get a conversion-optimized website, full handoff documentation, and 30 days of post-launch support.
+          If we miss the deadline, your first round of revisions costs you nothing.
+        </div>
+        <ul class="offer-list">
+          <li>Conversion-optimized design from day one</li>
+          <li>21-day delivery guarantee</li>
+          <li>Weekly progress updates — no chasing</li>
+          <li>30 days post-launch support included</li>
+          <li>One focused point of contact throughout</li>
+          <li>Full handoff: code, assets, documentation</li>
+        </ul>
+      </div>
+
+      <div class="why-cards">
+        <div class="why-card fi">
+          <div class="why-card-icon">⚡</div>
+          <h3>Strategic First, Tactical Second</h3>
+          <p>We don't start with templates. We audit your conversion funnel, identify the biggest leaks, and fix them in
+            order of impact. Every decision backed by data and psychology.</p>
+        </div>
+        <div class="why-card fi">
+          <div class="why-card-icon">🎯</div>
+          <h3>Direct & Accountable</h3>
+          <p>You'll always know where your project stands. No ghosting, no vague updates — clear timelines, honest
+            communication, and a team that ships what it promises.</p>
+        </div>
+        <div class="why-card fi">
+          <div class="why-card-icon">🛡️</div>
+          <h3>Calm Operators, Not Hype Machines</h3>
+          <p>No overpromising. No vanity metrics. Just honest assessments, clear roadmaps, and work that compounds over
+            time. We're the agency you hire when you're done experimenting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="services">
+    <div class="section-inner">
+      <div class="section-top fi">
+        <span class="label">Services</span>
+        <h2>What we build</h2>
+        <p class="section-desc">Three core services. One goal: turn your traffic into revenue without burning through
+          your runway.</p>
+      </div>
+      <div class="services-grid">
+        <div class="svc fi">
+          <div class="svc-num">01</div>
+          <h3>Conversion-First Web Development</h3>
+          <p>Fast, clean, conversion-optimized sites that work across Web2 and Web3. We build for clarity, speed, and
+            results — not decoration.</p>
+          <ul class="svc-list">
+            <li>Landing pages that convert cold traffic</li>
+            <li>Web3 wallet integration without friction</li>
+            <li>Mobile-first, lightning-fast load times</li>
+            <li>A/B testing framework built in</li>
+          </ul>
+        </div>
+        <div class="svc fi">
+          <div class="svc-num">02</div>
+          <h3>Social Media + Web3 Marketing</h3>
+          <p>We grow your community and turn attention into action. Strategy, content, and distribution for Web3
+            projects that need real traction.</p>
+          <ul class="svc-list">
+            <li>Twitter/X growth with authentic engagement</li>
+            <li>Community building for DAOs and tokens</li>
+            <li>Content that educates and converts</li>
+            <li>Campaign tracking and attribution</li>
+          </ul>
+        </div>
+        <div class="svc fi">
+          <div class="svc-num">03</div>
+          <h3>Website Audits + CRO</h3>
+          <p>Find and fix the leaks in your funnel. We analyze your site, messaging, and user flow — then tell you
+            exactly what to fix first.</p>
+          <ul class="svc-list">
+            <li>Conversion funnel audit and roadmap</li>
+            <li>Messaging clarity framework</li>
+            <li>UX friction point identification</li>
+            <li>Prioritized fix list with impact estimates</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="process">
+    <div class="section-inner">
+      <div class="section-top fi">
+        <span class="label">How We Work</span>
+        <h2>Our process</h2>
+        <p class="section-desc">No fluff. No endless discovery calls. Just a clear path from diagnosis to results.</p>
+      </div>
+      <div class="process-grid">
+        <div class="pstep fi">
+          <div class="pstep-dot">01</div>
+          <h3>Discovery</h3>
+          <p>We analyze your current funnel, traffic sources, and conversion data. One focused call to understand your
+            goals and constraints.</p>
+        </div>
+        <div class="pstep fi">
+          <div class="pstep-dot">02</div>
+          <h3>Clarity Audit</h3>
+          <p>A detailed breakdown of what's broken, why it's costing you conversions, and what to fix first. Prioritized
+            by impact.</p>
+        </div>
+        <div class="pstep fi">
+          <div class="pstep-dot">03</div>
+          <h3>Implementation</h3>
+          <p>We execute the plan. New site, content strategy, or funnel optimization — we ship fast and iterate based on
+            data.</p>
+        </div>
+        <div class="pstep fi">
+          <div class="pstep-dot">04</div>
+          <h3>Results + Iteration</h3>
+          <p>We track what matters: conversion rates, cost per acquisition, and revenue. Then we optimize, test, and
+            scale what works.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section id="proof" class="proof">
+    <div class="section-inner">
+      <div class="section-top fi">
+        <span class="label">Proof</span>
+        <h2>Work that speaks</h2>
+        <p class="section-desc">Real fixes. Real results. Here's what happens when you prioritize clarity over
+          complexity.</p>
+      </div>
+      <div class="proof-disclaimer fi">Case study details for non-public clients have been anonymized at client request.
+      </div>
+      <div class="proof-grid">
+        <div class="proof-card fi">
+          <span class="proof-industry">Web3 Token Launch</span>
+          <h3>From Confusing to Converting</h3>
+          <p class="proof-context">PMV Meme, Solana — Q4 2024</p>
+          <p>A DeFi project had traffic but zero conversions. Their landing page used too much jargon and had seven
+            different CTAs competing for attention.</p>
+          <div class="proof-fix">
+            <p><strong>The fix:</strong> Single clear value prop. One CTA. Wallet connection in 2 clicks instead of 6.
+              Conversion rate went from 0.8% to 4.2%.</p>
+          </div>
+          <p class="proof-lesson">→ Simplicity converts. Even in Web3.</p>
+        </div>
+        <div class="proof-card fi">
+          <span class="proof-industry">SaaS Startup</span>
+          <h3>Traffic ≠ Revenue</h3>
+          <p class="proof-context">B2B SaaS, Nigeria — 2025 · Details anonymized</p>
+          <p>A SaaS company had 50K monthly visitors but abysmal signup rates. Their homepage looked like a feature
+            list, not a solution.</p>
+          <div class="proof-fix">
+            <p><strong>The fix:</strong> Rewrote copy to focus on outcomes, not features. Added social proof. Reduced
+              form fields from 9 to 3. Signups increased 217%.</p>
+          </div>
+          <p class="proof-lesson">→ Show the result, not the process.</p>
+        </div>
+        <div class="proof-card fi">
+          <span class="proof-industry">Founder Brand</span>
+          <h3>Attention Without Direction</h3>
+          <p class="proof-context">Creator/Founder, Twitter — 2025 · Details anonymized</p>
+          <p>A founder had 30K Twitter followers but couldn't convert them to customers. Great content, zero funnel
+            strategy.</p>
+          <div class="proof-fix">
+            <p><strong>The fix:</strong> Built a simple opt-in funnel. Created a lead magnet aligned with their offer.
+              Added trackable links to content. First month: 400+ qualified leads.</p>
+          </div>
+          <p class="proof-lesson">→ Attention is worthless without a path to conversion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team" class="team">
+    <div class="section-inner">
+      <div class="section-top fi">
+        <span class="label">Meet the Team</span>
+        <h2>The people behind the work</h2>
+        <p class="section-desc">A founder-led agency. We're the people you'll actually work with — no handoffs to junior
+          staff.</p>
+      </div>
+      <div class="team-grid">
+
+        <!-- Team member 1 — Fouad -->
+        <div class="tcard fi">
+          <div class="tcard-img">
+            <!-- Replace src with your actual photo path -->
+            <img src="founder.jpg" alt="Fouad"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="tcard-img-placeholder" style="display:none;">F</div>
+            <div class="tcard-role">Founder & Lead Developer</div>
+          </div>
+          <div class="tcard-body">
+            <h3>Fouad</h3>
+            <p>Frontend developer and agency founder based in Lagos, Nigeria. I started GroviaTech to help founders and
+              startups build websites that actually grow their business. Every project I take on is grounded in one
+              question: is this converting?</p>
+            <div class="tcard-tags">
+              <span class="tcard-tag">Frontend Dev</span>
+              <span class="tcard-tag">Web3</span>
+              <span class="tcard-tag">CRO</span>
+              <span class="tcard-tag">React</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team member 2 — replace with real info -->
+        <div class="tcard fi">
+          <div class="tcard-img">
+            <img src="team-2.jpg" alt="Team member"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="tcard-img-placeholder" style="display:none;">?</div>
+            <div class="tcard-role">UI/UX Designer</div>
+          </div>
+          <div class="tcard-body">
+            <h3>Jeremiah</h3>
+            <p>Replace this with your designer's real name, background, and what they bring to the team. A sentence or
+              two about their specific expertise is enough.</p>
+            <div class="tcard-tags">
+              <span class="tcard-tag">UI Design</span>
+              <span class="tcard-tag">Figma</span>
+              <span class="tcard-tag">Branding</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team member 3 — replace with real info -->
+        <div class="tcard fi">
+          <div class="tcard-img">
+            <img src="team-3.jpg" alt="Team member"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="tcard-img-placeholder" style="display:none;">?</div>
+            <div class="tcard-role">Growth & Strategy</div>
+          </div>
+          <div class="tcard-body">
+            <h3>Mide</h3>
+            <p>Replace this with your strategist's real name and background. If you're currently a solo founder, you can
+              remove extra cards and keep just yours — one real card beats three placeholders.</p>
+            <div class="tcard-tags">
+              <span class="tcard-tag">Growth</span>
+              <span class="tcard-tag">Content</span>
+              <span class="tcard-tag">Web3</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INSIGHTS -->
+  <section class="insights">
+    <div class="section-inner">
+      <div class="insights-inner">
+        <div class="fi">
+          <span class="label" style="color:var(--electric); display:block; margin-bottom:.75rem;">Insights</span>
+          <h2>Learn while you build</h2>
+          <p class="section-desc">We share our frameworks, lessons, and strategies openly. Follow along for weekly
+            insights on conversion, clarity, and growth.</p>
+        </div>
+        <div class="insights-right fi">
+          <h3>Weekly Founder Insights</h3>
+          <p>Real lessons from real projects. We document what's working in web design, conversion, and startup growth —
+            openly, every week. No gatekeeping.</p>
+          <a href="https://twitter.com/groviatech" class="insights-link" target="_blank">
+            Follow on X (Twitter) →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="contact-inner">
+      <span class="label">Get Started</span>
+      <h2>Ready to build something that converts?</h2>
+      <p class="contact-sub">Tell us about your project. We'll review it and come back with honest feedback — no pitch,
+        no pressure.</p>
+
+      <form class="cform fi" id="contactForm">
+        <div class="form-row">
+          <div class="fg">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required>
+          </div>
+          <div class="fg">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="john@startup.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="fg">
+            <label for="website">Website URL (optional)</label>
+            <input type="url" id="website" name="website" placeholder="https://yoursite.com">
+          </div>
+          <div class="fg">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service">
+              <option value="" disabled selected>Select a service</option>
+              <option value="Web Development">Conversion-First Web Development</option>
+              <option value="Marketing">Social Media + Web3 Marketing</option>
+              <option value="Audit">Website Audit + CRO</option>
+              <option value="Not sure">Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg">
+          <label for="goal">What's your main goal right now?</label>
+          <textarea id="goal" name="goal"
+            placeholder="e.g. Launch a Web3 project, increase landing page conversions, build a content strategy..."
+            required></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="submitBtn">Start the Conversation</button>
+        <p class="form-note">We typically respond within 24 hours.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="footer-logo-box">
+              <svg viewBox="0 0 40 40" fill="none">
+                <path d="M20 8 L20 18 M20 18 L12 28 M20 18 L28 28 M12 28 L10 30 L14 30 M28 28 L26 30 L30 30"
+                  stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <span class="footer-name">GROVIA-TECH</span>
+          </div>
+          <p class="footer-about">A conversion-focused digital agency helping founders and startups build websites that
+            turn visitors into customers.</p>
+          <div class="footer-social">
+            <!-- X / Twitter -->
+            <a href="https://twitter.com/groviatech" target="_blank" class="social-link" aria-label="X (Twitter)">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
             </a>
-            <ul class="nav-links">
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#process">Process</a></li>
-                <li><a href="#proof">Proof</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="mobile-menu-btn" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com/company/groviatech" target="_blank" class="social-link" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+            </a>
+            <!-- WhatsApp -->
+            <a href="https://wa.me/2348000000000" target="_blank" class="social-link" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
+            </a>
+          </div>
         </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-label mono">CONVERSION-FOCUSED AGENCY</div>
-                <h1>We help founders turn <strong>attention into conversions</strong> — without burning money.</h1>
-                <p class="hero-subtitle">The calm, practical agency that fixes growth leaks. Strategic clarity over
-                    hype. Built for Web2, Web3, and everything in between.</p>
-                <div class="cta-group">
-                    <a href="#contact" class="btn btn-primary"><span>Get a Free Clarity Audit</span></a>
-                    <a href="#portfolio" class="btn btn-secondary"><span>See Our Work</span></a>
-                </div>
-            </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#proof">Proof</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
         </div>
-    </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <p class="section-label mono">PORTFOLIO</p>
-                <h2>Projects that convert</h2>
-                <p class="section-description">From Web3 meme coins to local service businesses — we build sites that
-                    turn visitors into customers.</p>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-card fade-in">
-                    <div class="portfolio-image"><img src="pmv.png" alt=""></div>
-                    <div class="portfolio-content">
-                        <p class="portfolio-type mono">WEB3 / MEME COIN</p>
-                        <h3>PMV Meme</h3>
-                        <p>Built a high-conversion landing page for a community-driven meme coin launch. Wallet
-                            integration, tokenomics display, and social proof elements optimized for crypto audiences.
-                        </p>
-                        <div class="portfolio-result">
-                            <strong>Result:</strong> Clean, fast-loading Web3 experience with seamless wallet connection
-                            and clear CTAs that drove early community adoption.
-                        </div>
-                        <a href="https://pmvmeme.com/" target="_blank" class="portfolio-link">Visit Site →</a>
-                    </div>
-                </div>
-
-                <div class="portfolio-card fade-in">
-                    <div class="portfolio-image"><img src="top.png" alt=""></div>
-                    <div class="portfolio-content">
-                        <p class="portfolio-type mono">LOCAL BUSINESS</p>
-                        <h3>TC Janitorial</h3>
-                        <p>Modernized a commercial cleaning service's online presence with a professional,
-                            trust-building website focused on service clarity and easy booking.</p>
-                        <div class="portfolio-result">
-                            <strong>Result:</strong> Professional site that positions them as the premium choice in
-                            their market, with mobile-first design and clear contact pathways.
-                        </div>
-                        <a href="https://tc-janitorial.com/" target="_blank" class="portfolio-link">Visit Site →</a>
-                    </div>
-                </div>
-
-                <div class="portfolio-card fade-in">
-                    <div class="portfolio-image"><img src="cuts.png" alt=""></div>
-                    <div class="portfolio-content">
-                        <p class="portfolio-type mono">BARBERSHOP</p>
-                        <h3>Elite Cuts</h3>
-                        <p>Created a sleek, modern website for a premium barbershop. Gallery showcase, online booking
-                            integration, and social media feeds to build local brand authority.</p>
-                        <div class="portfolio-result">
-                            <strong>Result:</strong> Stylish site that reflects the quality of service, increased
-                            appointment bookings through clear CTAs and mobile optimization.
-                        </div>
-                        <a href="https://elite-cuts-seven.vercel.app/" target="_blank" class="portfolio-link">Visit Site
-                            →</a>
-                    </div>
-                </div>
-
-                <div class="portfolio-card fade-in">
-                    <div class="portfolio-image"><img src="prestige.png" alt=""></div>
-                    <div class="portfolio-content">
-                        <p class="portfolio-type mono">REAL ESTATE</p>
-                        <h3>Prestige Realty</h3>
-                        <p>Designed a professional real estate platform with property listings, agent profiles, and lead
-                            capture forms optimized for high-value conversions.</p>
-                        <div class="portfolio-result">
-                            <strong>Result:</strong> Sophisticated site that builds trust with luxury buyers,
-                            streamlined property search experience, and optimized contact forms.
-                        </div>
-                        <a href="https://prestige-realty-two.vercel.app/" target="_blank" class="portfolio-link">Visit
-                            Site →</a>
-                    </div>
-                </div>
-            </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Web Development</a></li>
+            <li><a href="#services">Web3 Marketing</a></li>
+            <li><a href="#services">Website Audits</a></li>
+            <li><a href="#services">CRO</a></li>
+            <li><a href="#contact">Free Clarity Audit</a></li>
+          </ul>
         </div>
-    </section>
 
-    <!-- Twitter Case Studies Section -->
-    <section class="twitter-case-studies">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <p class="section-label mono">X CASE STUDIES</p>
-                <h2>Real insights, real growth</h2>
-                <p class="section-description">Deep dives into what's working in conversion, growth, and clarity.
-                    Documented transparently on X.</p>
-            </div>
-            <div class="twitter-posts-grid" id="twitterPostsGrid">
-                <!-- Twitter Post Card 1 -->
-                <a href="https://x.com/groviatech/status/2017290987417063776" target="_blank"
-                    class="twitter-post-card fade-in">
-                    <div class="twitter-post-header">
-                        <div class="twitter-avatar">GT</div>
-                        <div class="twitter-user-info">
-                            <div class="twitter-name">
-                                GroviaTech
-                                <svg class="twitter-verified" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
-                                </svg>
-                            </div>
-                            <div class="twitter-handle">@groviatech</div>
-                        </div>
-                        <svg class="twitter-logo" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                        </svg>
-                    </div>
-                    <div class="twitter-post-content">
-                        Case Study: How we turned a confusing homepage into a conversion machine. Thread 🧵
-                    </div>
-                    <div class="twitter-post-meta">
-                        <span class="twitter-stat">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M12 21.638h-.014C9.403 21.59 1.95 14.856 1.95 8.478c0-3.064 2.525-5.754 5.403-5.754 2.29 0 3.83 1.58 4.646 2.73.814-1.148 2.354-2.73 4.645-2.73 2.88 0 5.404 2.69 5.404 5.755 0 6.376-7.454 13.11-10.037 13.157H12z" />
-                            </svg>
-                            124
-                        </span>
-                        <span class="twitter-stat">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z" />
-                            </svg>
-                            43
-                        </span>
-                        <span class="twitter-date">Jan 27, 2025</span>
-                    </div>
-                </a>
-
-                <!-- Add More Card (for easy updating) -->
-                <!-- <div class="add-case-study fade-in">
-                    <div class="add-icon">+</div>
-                    <p><strong>Add New Case Study</strong></p>
-                    <small>To add more, edit the HTML and copy the twitter-post-card block with your new X post
-                        link</small>
-                </div> -->
-            </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            <a href="mailto:groviatechh@gmail.com">groviatechh@gmail.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+            <!-- Replace with your actual WhatsApp number -->
+            <a href="https://wa.me/2348000000000" target="_blank">WhatsApp Us</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+            <a href="https://linkedin.com/company/groviatech" target="_blank">LinkedIn Page</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+            <a href="https://twitter.com/groviatech" target="_blank">@groviatech on X</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <span>Lagos, Nigeria</span>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- About Section -->
-    <section class="about">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <p class="section-label mono">WHY GROVIATECH</p>
-                <h2>Clarity drives conversion. <br>We deliver both.</h2>
-                <p class="section-description">Most agencies promise hockey-stick growth. We promise something better:
-                    no wasted spend, clear messaging, and systems that actually convert.</p>
-            </div>
-            <div class="about-grid">
-                <div class="about-card fade-in">
-                    <h3>Strategic First, Tactical Second</h3>
-                    <p>We don't start with templates. We audit your conversion funnel, identify the biggest leaks, and
-                        fix them in order of impact. Every decision backed by data and psychology.</p>
-                </div>
-                <div class="about-card fade-in">
-                    <h3>Web3 Native, Web2 Fluent</h3>
-                    <p>We understand token launches, DAO governance, and wallet onboarding flows. But we also know that
-                        good marketing transcends blockchain buzzwords. Clarity first, tech second.</p>
-                </div>
-                <div class="about-card fade-in">
-                    <h3>Calm Operators, Not Hype Machines</h3>
-                    <p>No overpromising. No vanity metrics. Just honest assessments, clear roadmaps, and work that
-                        compounds over time. We're the agency you hire when you're done experimenting.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+      <div class="footer-bottom">
+        <p>© 2026 GroviaTech. Built by Fouad · Lagos, Nigeria.</p>
+        <span class="footer-tagline">Trustworthy · Transparent · Talented</span>
+      </div>
+    </div>
+  </footer>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <p class="section-label mono">SERVICES</p>
-                <h2>What we build</h2>
-                <p class="section-description">Three core services. One goal: turn your traffic into revenue without
-                    burning through your runway.</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">⚡</div>
-                    <h3>Conversion-First Web Development</h3>
-                    <p>Fast, clean, conversion-optimized sites that work across Web2 and Web3. We build for clarity,
-                        speed, and results — not decoration.</p>
-                    <ul class="service-outcomes">
-                        <li>Landing pages that convert cold traffic</li>
-                        <li>Web3 wallet integration without friction</li>
-                        <li>Mobile-first, lightning-fast load times</li>
-                        <li>A/B testing framework built in</li>
-                    </ul>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🎯</div>
-                    <h3>Social Media + Web3 Marketing</h3>
-                    <p>We grow your community and turn attention into action. Strategy, content, and distribution for
-                        Web3 projects that need real traction.</p>
-                    <ul class="service-outcomes">
-                        <li>Twitter/X growth with authentic engagement</li>
-                        <li>Community building for DAOs and tokens</li>
-                        <li>Content that educates and converts</li>
-                        <li>Campaign tracking and attribution</li>
-                    </ul>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🔍</div>
-                    <h3>Website Audits + CRO</h3>
-                    <p>Find and fix the leaks in your funnel. We analyze your site, messaging, and user flow — then tell
-                        you exactly what to fix first.</p>
-                    <ul class="service-outcomes">
-                        <li>Conversion funnel audit and roadmap</li>
-                        <li>Messaging clarity framework</li>
-                        <li>UX friction point identification</li>
-                        <li>Prioritized fix list with impact estimates</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Toast -->
+  <div class="toast" id="toast">✓ Message sent! We'll reply within 24 hours.</div>
 
-    <!-- Process Section -->
-    <section id="process" class="process">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <p class="section-label mono">HOW WE WORK</p>
-                <h2>Our process</h2>
-                <p class="section-description">No fluff. No endless discovery calls. Just a clear path from diagnosis to
-                    results.</p>
-            </div>
-            <div class="process-steps">
-                <div class="process-step fade-in">
-                    <div class="step-number">01</div>
-                    <h3>Discovery</h3>
-                    <p>We analyze your current funnel, traffic sources, and conversion data. One focused call to
-                        understand your goals and constraints.</p>
-                </div>
-                <div class="process-step fade-in">
-                    <div class="step-number">02</div>
-                    <h3>Clarity Audit</h3>
-                    <p>We deliver a detailed breakdown of what's broken, why it's costing you conversions, and what to
-                        fix first. Prioritized by impact.</p>
-                </div>
-                <div class="process-step fade-in">
-                    <div class="step-number">03</div>
-                    <h3>Implementation</h3>
-                    <p>We execute the plan. Whether it's a new site, a content strategy, or funnel optimization — we
-                        ship fast and iterate based on data.</p>
-                </div>
-                <div class="process-step fade-in">
-                    <div class="step-number">04</div>
-                    <h3>Results + Iteration</h3>
-                    <p>We track what matters: conversion rates, cost per acquisition, and revenue. Then we optimize,
-                        test, and scale what works.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <script>
+    // Mobile nav
+    const mobileBtn = document.getElementById('mobileBtn');
+    const navLinks = document.getElementById('navLinks');
+    mobileBtn.addEventListener('click', () => {
+      mobileBtn.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileBtn.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
 
-    <!-- Proof Section -->
-    <section id="proof" class="proof">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <p class="section-label mono">PROOF</p>
-                <h2>Work that speaks</h2>
-                <p class="section-description">Real fixes. Real results. Here's what happens when you prioritize clarity
-                    over complexity.</p>
-            </div>
-            <div class="case-studies">
-                <div class="case-study fade-in">
-                    <p class="case-study-label mono">WEB3 TOKEN LAUNCH</p>
-                    <h3>From Confusing to Converting</h3>
-                    <p>A DeFi project had traffic but zero conversions. Their landing page used too much jargon and had
-                        seven different CTAs competing for attention.</p>
-                    <div class="case-study-result">
-                        <p><strong>The fix:</strong> Single clear value prop. One CTA. Wallet connection in 2 clicks
-                            instead of 6. Conversion rate went from 0.8% to 4.2%.</p>
-                    </div>
-                    <p><strong>Lesson:</strong> Simplicity converts. Even in Web3.</p>
-                </div>
-                <div class="case-study fade-in">
-                    <p class="case-study-label mono">SAAS STARTUP</p>
-                    <h3>Traffic ≠ Revenue</h3>
-                    <p>A SaaS company had 50K monthly visitors but abysmal signup rates. Their homepage looked like a
-                        feature list, not a solution.</p>
-                    <div class="case-study-result">
-                        <p><strong>The fix:</strong> Rewrote copy to focus on outcomes, not features. Added social
-                            proof. Reduced form fields from 9 to 3. Signups increased 217%.</p>
-                    </div>
-                    <p><strong>Lesson:</strong> Show the result, not the process.</p>
-                </div>
-                <div class="case-study fade-in">
-                    <p class="case-study-label mono">FOUNDER BRAND</p>
-                    <h3>Attention Without Direction</h3>
-                    <p>A founder had 30K Twitter followers but couldn't convert them to customers. Great content, zero
-                        funnel strategy.</p>
-                    <div class="case-study-result">
-                        <p><strong>The fix:</strong> Built a simple opt-in funnel. Created a lead magnet aligned with
-                            their offer. Added trackable links to content. First month: 400+ qualified leads.</p>
-                    </div>
-                    <p><strong>Lesson:</strong> Attention is worthless without a path to conversion.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    // Scroll animations
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fi').forEach(el => obs.observe(el));
 
-    <!-- Content Section -->
-    <section class="content-section">
-        <div class="section-container">
-            <div class="content-grid">
-                <div>
-                    <p class="section-label mono">INSIGHTS</p>
-                    <h2>Learn while you build</h2>
-                    <p class="section-description">We share our frameworks, lessons, and strategies openly. Follow along
-                        for weekly insights on conversion, clarity, and growth.</p>
-                </div>
-                <div class="content-preview fade-in">
-                    <h3>Weekly Founder Insights</h3>
-                    <p>From homepage clarity frameworks to Web3 onboarding flows, we break down what's working in growth
-                        right now. No gatekeeping.</p>
-                    <a href="https://twitter.com/groviatech" class="content-link" target="_blank">
-                        Follow on X (Twitter) →
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+    // Stagger service cards
+    document.querySelectorAll('.svc').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.08}s`;
+    });
+    document.querySelectorAll('.why-card').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.08}s`;
+    });
+    document.querySelectorAll('.tcard').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.1}s`;
+    });
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="contact-container">
-            <p class="section-label mono">GET STARTED</p>
-            <h2>Ready to stop guessing?</h2>
-            <p class="contact-description">Book a free clarity audit. We'll analyze your funnel and show you exactly
-                what to fix first — no commitment required.</p>
+    // Contact form — sends via mailto + shows toast
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
 
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="website">Website URL (if applicable)</label>
-                    <input type="url" id="website" name="website">
-                </div>
-                <div class="form-group">
-                    <label for="goal">What's your main goal right now?</label>
-                    <textarea id="goal" name="goal" required
-                        placeholder="e.g., Launch a Web3 project, increase landing page conversions, build a content strategy..."></textarea>
-                </div>
-                <button type="submit" class="form-submit" id="submitBtn">Request Your Free Audit</button>
-            </form>
-        </div>
-    </section>
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const website = document.getElementById('website').value;
+      const service = document.getElementById('service').value;
+      const goal = document.getElementById('goal').value;
 
-    <!-- Footer -->
-    <footer>
-        <div class="section-container">
-            <p class="mono">© 2026 GroviaTech. Trustworthy. Transparent. Talented.</p>
-        </div>
-    </footer>
+      const subject = encodeURIComponent(`New Project Inquiry from ${name}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nWebsite: ${website || 'Not provided'}\nService: ${service || 'Not specified'}\n\nGoal:\n${goal}`
+      );
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
+      window.location.href = `mailto:groviatechh@gmail.com?subject=${subject}&body=${body}`;
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenuBtn.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
+      setTimeout(() => {
+        // Show toast
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 4000);
 
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenuBtn.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all elements with fade-in class
-        document.querySelectorAll('.fade-in, .section-header, .about-card, .service-card, .process-step, .case-study, .portfolio-card, .twitter-post-card, .add-case-study').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Form submission handler with email integration
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const submitBtn = document.getElementById('submitBtn');
-            const originalText = submitBtn.textContent;
-
-            // Disable button and show loading state
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                website: document.getElementById('website').value,
-                goal: document.getElementById('goal').value
-            };
-
-            // Create mailto link with form data
-            const subject = encodeURIComponent('New Clarity Audit Request from ' + formData.name);
-            const body = encodeURIComponent(
-                'Name: ' + formData.name + '\n' +
-                'Email: ' + formData.email + '\n' +
-                'Website: ' + (formData.website || 'Not provided') + '\n\n' +
-                'Goal:\n' + formData.goal
-            );
-
-            const mailtoLink = `mailto:groviatechh@gmail.com?subject=${subject}&body=${body}`;
-
-            // Open email client
-            window.location.href = mailtoLink;
-
-            // Show success message
-            setTimeout(() => {
-                alert('Thank you! Your email client should open. We\'ll get back to you within 24 hours with your clarity audit.');
-
-                // Reset form
-                this.reset();
-
-                // Re-enable button
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-            }, 1000);
-        });
-
-        // Add stagger effect to service cards
-        const serviceCards = document.querySelectorAll('.service-card');
-        serviceCards.forEach((card, index) => {
-            card.style.transitionDelay = `${index * 0.1}s`;
-        });
-    </script>
+        // Reset
+        this.reset();
+        btn.disabled = false;
+        btn.textContent = 'Start the Conversation';
+      }, 800);
+    });
+  </script>
 </body>
 
 </html>
