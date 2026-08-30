@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import Counter from "@/components/Counter";
+import TestimonialStack from "@/components/TestimonialStack";
 
 export const metadata: Metadata = {
   title: "GroviaTech Solutions | Tech Solutions Agency | Software & Cybersecurity",
@@ -21,10 +22,10 @@ const services = [
 ];
 
 const projects = [
-  { title: "Elan by Crelivio", type: "Web Platform", url: "https://elan.crelivio.com", initials: "EL", color: "#0d3b52" },
-  { title: "Margi Marketing", type: "Marketing Agency", url: "https://margimarketing.com", initials: "MM", color: "#0f2d3f" },
-  { title: "TEDxOsogbo", type: "Event Platform", url: "https://tedxosogbo.com.ng", initials: "TX", color: "#4a7c8c" },
-  { title: "PMV Meme", type: "Web3 / Meme Coin", url: "https://pmvmeme.com", initials: "PM", color: "#06b6d4" },
+  { title: "Elan by Crelivio", type: "Web Platform", url: "https://elan.crelivio.com", image: "/elan.png", color: "#0d3b52" },
+  { title: "Margi Marketing", type: "Marketing Agency", url: "https://margimarketing.com", image: "/margi.png", color: "#0f2d3f" },
+  { title: "TEDxOsogbo", type: "Event Platform", url: "https://tedxosogbo.com.ng", image: "/tedxosogbo.png", color: "#4a7c8c" },
+  { title: "PMV Meme", type: "Web3 / Meme Coin", url: "https://pmvmeme.com", image: "/pmvmeme.png", color: "#06b6d4" },
 ];
 
 const whyUs = [
@@ -39,8 +40,27 @@ export default function Home() {
     <>
       {/* ── HERO ── */}
       <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", background: "#081f2d", position: "relative", overflow: "hidden", padding: "8rem 2rem 5rem" }}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            opacity: 0.45,
+            filter: "brightness(0.7) saturate(0.9)",
+          }}
+        >
+          <source src="/home-hero.mp4" type="video/mp4" />
+        </video>
         {/* Grid bg */}
         <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(6,182,212,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(6,182,212,0.05) 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(8,31,45,0.85) 0%, rgba(8,31,45,0.6) 35%, rgba(8,31,45,0.7) 100%)" }} />
         {/* Glow */}
         <div style={{ position: "absolute", top: "10%", right: "5%", width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(6,182,212,0.08), transparent 70%)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", bottom: "5%", left: "0%", width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle, rgba(13,59,82,0.4), transparent 70%)", pointerEvents: "none" }} />
@@ -124,7 +144,7 @@ export default function Home() {
       {/* ── WHY US ── */}
       <section style={{ padding: "7rem 2rem", background: "#081f2d" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center" }}>
+          <div className="why-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "center" }}>
             <ScrollReveal>
               <span className="tag" style={{ marginBottom: "0.75rem" }}>Why GroviaTech</span>
               <h2 style={{ fontFamily: "var(--font-grotesk)", fontWeight: 700, fontSize: "clamp(2rem,4vw,3rem)", color: "white", lineHeight: 1.2, marginBottom: "1.25rem" }}>
@@ -135,7 +155,7 @@ export default function Home() {
               </p>
               <Link href="/about/why-us" className="btn-primary btn-primary-cyan"><span>Why Choose Us</span></Link>
             </ScrollReveal>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }}>
+            <div className="why-cards" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }}>
               {whyUs.map((item, i) => (
                 <ScrollReveal key={item.title} delay={i * 80}>
                   <div style={{ padding: "1.75rem", border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.02)", transition: "border-color 0.3s" }} className="glow-hover">
@@ -148,7 +168,12 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <style>{`@media(max-width:768px){section > div > div[style*="grid-template-columns: 1fr 1fr"]{grid-template-columns:1fr!important}}`}</style>
+        <style>{`
+          @media (max-width: 768px) {
+            .why-grid { grid-template-columns: 1fr !important; }
+            .why-cards { grid-template-columns: 1fr !important; }
+          }
+        `}</style>
       </section>
 
       {/* ── PORTFOLIO PREVIEW ── */}
@@ -168,9 +193,9 @@ export default function Home() {
             {projects.map((p, i) => (
               <ScrollReveal key={p.title} delay={i * 80}>
                 <a href={p.url} target="_blank" rel="noopener noreferrer" style={{ display: "block", textDecoration: "none", background: "#f8f8f6", border: "1px solid rgba(0,0,0,0.06)", overflow: "hidden" }} className="card-hover">
-                  <div style={{ height: 160, background: `linear-gradient(135deg, ${p.color}, #06b6d4)`, display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
-                    <span style={{ fontFamily: "var(--font-grotesk)", fontWeight: 700, fontSize: "2.5rem", color: "rgba(255,255,255,0.2)" }}>{p.initials}</span>
-                    <span style={{ position: "absolute", top: 12, left: 12, fontFamily: "var(--font-mono)", fontSize: "0.6rem", color: "rgba(255,255,255,0.6)", border: "1px solid rgba(255,255,255,0.2)", padding: "0.2rem 0.5rem", letterSpacing: "1px", textTransform: "uppercase" }}>{p.type}</span>
+                  <div style={{ height: 160, background: `linear-gradient(135deg, ${p.color}, #06b6d4)`, position: "relative", overflow: "hidden" }}>
+                    <img src={p.image} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                    <span style={{ position: "absolute", top: 12, left: 12, fontFamily: "var(--font-mono)", fontSize: "0.6rem", color: "rgba(255,255,255,0.9)", border: "1px solid rgba(255,255,255,0.25)", background: "rgba(8,31,45,0.35)", padding: "0.2rem 0.5rem", letterSpacing: "1px", textTransform: "uppercase" }}>{p.type}</span>
                   </div>
                   <div style={{ padding: "1.25rem 1.5rem" }}>
                     <h3 style={{ fontFamily: "var(--font-grotesk)", fontWeight: 600, fontSize: "1rem", color: "#0d3b52", marginBottom: "0.4rem" }}>{p.title}</h3>
@@ -183,39 +208,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── TESTIMONIAL PREVIEW ── */}
-      <section style={{ padding: "7rem 2rem", background: "#f8f8f6" }}>
+      {/* ── TESTIMONIALS ── */}
+      <section style={{ padding: "7rem 2rem", background: "white" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <ScrollReveal>
-            <span className="tag" style={{ marginBottom: "0.75rem" }}>Client Stories</span>
-            <h2 style={{ fontFamily: "var(--font-grotesk)", fontWeight: 700, fontSize: "clamp(2rem,4vw,3rem)", color: "#0d3b52", marginBottom: "0.5rem" }}>Don&apos;t take our word for it</h2>
-            <div className="section-divider" style={{ marginBottom: "3.5rem" }} />
-          </ScrollReveal>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: "1.5rem", marginBottom: "2.5rem" }}>
-            {[
-              { quote: "Brooo. Your work on the website is looking niiiice! thank you for helping. I want to send you some SOL for this task.", client: "PMV Client", project: "PMV Meme — Web3 Project" },
-              { quote: "Fouad i did check very good job!!!! Start Looks good.", client: "Anonymous Client", project: "Website Development" },
-              { quote: "Just heard from the leaders and they're genuinely impressed with what we pulled off. That's a big win guys! Honestly, thank you both.", client: "Iufe", project: "TEDxOsogbo — Event Platform" },
-            ].map((t, i) => (
-              <ScrollReveal key={i} delay={i * 100}>
-                <div style={{ background: "white", padding: "2rem", border: "1px solid rgba(0,0,0,0.06)" }} className="card-hover">
-                  <div style={{ display: "flex", gap: "0.25rem", marginBottom: "1rem" }}>
-                    {[...Array(5)].map((_, j) => <span key={j} style={{ color: "#06b6d4", fontSize: "0.85rem" }}>★</span>)}
-                  </div>
-                  <p style={{ fontFamily: "var(--font-inter)", fontSize: "0.9rem", color: "#444", lineHeight: 1.7, marginBottom: "1.5rem", fontStyle: "italic" }}>&ldquo;{t.quote}&rdquo;</p>
-                  <div style={{ borderTop: "1px solid rgba(0,0,0,0.06)", paddingTop: "1rem" }}>
-                    <p style={{ fontFamily: "var(--font-grotesk)", fontWeight: 600, fontSize: "0.85rem", color: "#0d3b52" }}>{t.client}</p>
-                    <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.65rem", color: "#06b6d4", letterSpacing: "0.5px" }}>{t.project}</p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-          <ScrollReveal>
-            <div style={{ textAlign: "center" }}>
-              <Link href="/success-stories" className="btn-outline" style={{ fontSize: "0.85rem" }}>Read All Success Stories</Link>
-            </div>
-          </ScrollReveal>
+          <TestimonialStack />
         </div>
       </section>
 

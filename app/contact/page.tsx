@@ -81,7 +81,7 @@ export default function ContactPage() {
 
       <section style={{ padding: "4rem 2rem 6rem", background: "#f8f8f6" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: "3rem", alignItems: "start" }}>
+          <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: "3rem", alignItems: "start" }}>
             {/* LEFT: Pricing builder + form */}
             <div>
               {/* Pricing builder */}
@@ -251,9 +251,13 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-          <style>{`@media(max-width:1024px){section > div > div[style*="grid-template-columns: 1fr 380px"]{grid-template-columns:1fr!important} section > div > div > div[style*="position: sticky"]{position:static!important}}`}</style>
         </div>
       </section>
+      <style>{`
+        @media (max-width: 768px) {
+          .contact-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </>
   );
 }

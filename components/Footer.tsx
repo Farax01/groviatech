@@ -20,7 +20,7 @@ export default function Footer() {
   return (
     <footer style={{ background: "#081f2d", color: "white", padding: "5rem 0 0" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 2rem" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1.5fr", gap: "3rem", paddingBottom: "4rem", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+        <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1.5fr", gap: "3rem", paddingBottom: "4rem", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
           {/* Brand col */}
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "0.7rem", marginBottom: "1.2rem" }}>
@@ -84,7 +84,11 @@ export default function Footer() {
           <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", color: "rgba(255,255,255,0.25)" }}>Trustworthy · Transparent · Talented</p>
         </div>
       </div>
-      <style>{`@media(max-width:900px){footer > div > div:first-child > div:first-child{grid-template-columns:1fr 1fr!important}}`}</style>
+      <style>{`
+        @media (max-width: 768px) {
+          .footer-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </footer>
   );
 }

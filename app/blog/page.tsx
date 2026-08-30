@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Brain, Bug, CheckCircle, Code, Globe, Lock, Search, Settings, Shield, Smartphone } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
@@ -12,10 +13,10 @@ const xPosts = [
 ];
 
 const topics = [
-  { icon: "💻", title: "Software Development", desc: "Modern stacks, architecture decisions, and lessons from real client builds." },
-  { icon: "🛡️", title: "Cybersecurity", desc: "Vulnerability walkthroughs, hardening guides, and security for SMEs." },
-  { icon: "📈", title: "Growth & CRO", desc: "How to turn traffic into customers — conversion strategy for founders." },
-  { icon: "⛓️", title: "Web3 & Blockchain", desc: "Building and securing decentralised applications and token projects." },
+  { icon: Globe, title: "Software Development", desc: "Modern stacks, architecture decisions, and lessons from real client builds." },
+  { icon: Shield, title: "Cybersecurity", desc: "Vulnerability walkthroughs, hardening guides, and security for SMEs." },
+  { icon: Search, title: "Growth & CRO", desc: "How to turn traffic into customers — conversion strategy for founders." },
+  { icon: Lock, title: "Web3 & Blockchain", desc: "Building and securing decentralised applications and token projects." },
 ];
 
 export default function BlogPage() {
@@ -44,16 +45,19 @@ export default function BlogPage() {
             <span className="tag" style={{ marginBottom: "0.75rem" }}>Topics</span>
             <h2 style={{ fontFamily: "var(--font-grotesk)", fontWeight: 700, fontSize: "clamp(2rem,4vw,3rem)", color: "#0d3b52", marginBottom: "3rem" }}>What we write about</h2>
           </ScrollReveal>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: "1.5rem" }}>
-            {topics.map((t, i) => (
-              <ScrollReveal key={t.title} delay={i * 80}>
-                <div style={{ padding: "2rem", background: "#f8f8f6", border: "1px solid rgba(0,0,0,0.06)" }} className="card-hover">
-                  <span style={{ fontSize: "2rem", display: "block", marginBottom: "1rem" }}>{t.icon}</span>
-                  <h3 style={{ fontFamily: "var(--font-grotesk)", fontWeight: 700, fontSize: "1rem", color: "#0d3b52", marginBottom: "0.6rem" }}>{t.title}</h3>
-                  <p style={{ fontFamily: "var(--font-inter)", fontSize: "0.83rem", color: "#666", lineHeight: 1.7 }}>{t.desc}</p>
-                </div>
-              </ScrollReveal>
-            ))}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: "1.5rem", alignItems: "stretch" }}>
+            {topics.map((t, i) => {
+              const Icon = t.icon;
+              return (
+                <ScrollReveal key={t.title} delay={i * 80}>
+                  <div style={{ padding: "2rem", background: "#f8f8f6", border: "1px solid rgba(0,0,0,0.06)", height: "100%", display: "flex", flexDirection: "column" }} className="card-hover">
+                    <span style={{ display: "block", marginBottom: "1rem" }}><Icon size={28} color="#06b6d4" /></span>
+                    <h3 style={{ fontFamily: "var(--font-grotesk)", fontWeight: 700, fontSize: "1rem", color: "#0d3b52", marginBottom: "0.6rem" }}>{t.title}</h3>
+                    <p style={{ fontFamily: "var(--font-inter)", fontSize: "0.83rem", color: "#666", lineHeight: 1.7 }}>{t.desc}</p>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
