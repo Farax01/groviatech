@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="55.6 197.9 116 116">
+  <style>
+    .m { fill: none; stroke: #0E4172; stroke-width: 8; }
+    @media (prefers-color-scheme: dark) { .m { stroke: #ffffff; } }
+  </style>
+  <path class="m" d="M113.06 255.91L113.06 209.12M125.23 209.12L100.89 209.12M114.49 252.79L68.39 292.52M60.44 283.30L76.34 301.74M111.63 252.79L158.81 293.39M150.87 302.61L166.75 284.17"/>
+</svg>

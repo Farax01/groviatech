@@ -1,0 +1,21 @@
+/* Contact, in the site design system: blue-soft panel, pill fields, ink button. */
+.ct { padding-block: clamp(2.5rem, 6vw, 4.5rem) 0; }
+.ct-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 2.5rem 4rem; align-items: start; }
+.ct h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); line-height: 1; max-width: 12ch; }
+.ct-grid > div > p { margin-top: 1.25rem; color: var(--muted-strong); max-width: 40ch; font-size: clamp(1.05rem, 1.8vw, 1.25rem); font-weight: 300; }
+.ct-meta { margin-top: 2rem; color: var(--muted-strong); font-size: 0.95rem; line-height: 1.6; }
+.ct-meta a { color: var(--ink); font-weight: 600; }
+
+.ct-form { display: grid; gap: 1.1rem; background: var(--blue-soft); border-radius: var(--r-md); padding: clamp(1.25rem, 4vw, 2.5rem); }
+.ct-form label { display: grid; gap: 0.4rem; font-weight: 600; font-size: 0.9rem; }
+.ct-form input, .ct-form textarea { font: inherit; font-weight: 450; color: var(--ink); background: var(--canvas); border: 1px solid transparent; width: 100%; }
+.ct-form input { height: 48px; padding: 0 20px; border-radius: var(--r-full); }
+.ct-form textarea { padding: 14px 20px; border-radius: var(--r-sm); resize: vertical; min-height: 8rem; }
+.ct-form input::placeholder, .ct-form textarea::placeholder { color: var(--muted); }
+.ct-form input:focus-visible, .ct-form textarea:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.ct-form .btn { justify-self: start; }
+.ct-error { color: #b42318; font-size: 0.95rem; font-weight: 600; }
+.ct-done { background: var(--blue-soft); border-radius: var(--r-md); padding: clamp(1.25rem, 4vw, 2.5rem); }
+.ct-done h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+.ct-done p { margin-top: 0.5rem; color: var(--muted-strong); }
+@media (max-width: 860px) { .ct-grid { grid-template-columns: 1fr; } }

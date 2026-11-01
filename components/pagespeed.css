@@ -1,0 +1,7 @@
+.hm-speed { display: grid; gap: 0.5rem; }
+.hm-speed ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
+.hm-speed li { display: grid; gap: 0.1rem; padding: 0.6rem 0.75rem; background: var(--canvas); border-radius: var(--r-sm); }
+.hm-speed strong { font-size: 1.5rem; line-height: 1; font-weight: 650; }
+.hm-speed .is-good strong { color: var(--blue); }
+.hm-speed span { font-size: 0.78rem; color: var(--muted-strong); }
+.hm-speed p { margin: 0; font-size: 0.8rem; color: var(--muted-strong); }

@@ -1,41 +1,33 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import CookieBanner from "@/components/CookieBanner";
+import type { Metadata, Viewport } from 'next'
+import { Hanken_Grotesk } from 'next/font/google'
+import './globals.css'
+
+// Hanken Grotesk is the free stand-in the design reference recommends for Saans.
+// It is a variable font, so the 300 / 450 / 650 weights below are real, not rounded.
+const sans = Hanken_Grotesk({ subsets: ['latin'], variable: '--font-sans', display: 'swap' })
+
+export const viewport: Viewport = { themeColor: '#ffffff' }
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://groviatech.vercel.app"),
-  title: {
-    default: "GroviaTech Solutions | Tech Solutions Agency",
-    template: "%s | GroviaTech Solutions",
-  },
-  description: "GroviaTech Solutions builds secure software and defends businesses against cyber threats. Software development and cybersecurity for SMEs globally.",
-  keywords: ["GroviaTech","GroviaTech Solutions","tech solutions agency","web development agency Lagos","cybersecurity Nigeria","software development agency","penetration testing Nigeria","web development agency United States","web development agency UAE","web development agency UK"],
-  authors: [{ name: "GroviaTech Solutions" }],
-  openGraph: {
-    type: "website",
-    siteName: "GroviaTech Solutions",
-    title: "GroviaTech Solutions | Grow via Technical Solutions",
-    description: "Software development and cybersecurity for SMEs globally.",
-  },
-  twitter: { card: "summary_large_image", site: "@groviatech", creator: "@groviatech" },
-  robots: { index: true, follow: true },
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
-};
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://groviatech.vercel.app'),
+  title: { default: 'Groviatech', template: '%s | Groviatech' },
+  description: 'Secure websites and security testing for small businesses and AI startups.',
+  openGraph: { siteName: 'Groviatech', type: 'website', locale: 'en_US' },
+  twitter: { card: 'summary_large_image' },
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body>
-        <Navbar />
-        <main style={{ paddingTop: 72 }}>{children}</main>
-        <Footer />
-        <CookieBanner />
-      </body>
+    <html lang="en" className={sans.variable} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(sessionStorage.getItem('gt-intro'))document.documentElement.setAttribute('data-intro','seen')}catch(e){console.warn('Could not read the homepage intro state.',e)}",
+          }}
+        />
+      </head>
+      <body>{children}</body>
     </html>
-  );
+  )
 }

@@ -1,15 +1,29 @@
-export default function Logo({ size = 40, color = "#0d3b52" }: { size?: number; color?: string }) {
+/* The Groviatech Solutions Limited logo, as vector files in /public/logo.
+   variant "header": icon + GROVIATECH wordmark (used in the navbar).
+   variant "full": adds "Solutions Limited" and the tagline (used in the footer).
+   tone "white": all-white version for dark backgrounds. */
+const RATIO = { header: 352 / 100, full: 382 / 100 } as const
+
+export function Logo({
+  variant = 'full',
+  tone = 'color',
+  height = 48,
+  className = '',
+}: {
+  variant?: 'header' | 'full'
+  tone?: 'color' | 'white'
+  height?: number
+  className?: string
+}) {
+  const file = `/logo/groviatech-logo-${variant}${tone === 'white' ? '-white' : ''}.svg`
   return (
-    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Top T */}
-      <line x1="50" y1="60" x2="50" y2="20" stroke={color} strokeWidth="8" strokeLinecap="round"/>
-      <line x1="30" y1="20" x2="70" y2="20" stroke={color} strokeWidth="8" strokeLinecap="round"/>
-      {/* Bottom-left T */}
-      <line x1="50" y1="60" x2="18" y2="88" stroke={color} strokeWidth="8" strokeLinecap="round"/>
-      <line x1="7" y1="79" x2="29" y2="97" stroke={color} strokeWidth="8" strokeLinecap="round"/>
-      {/* Bottom-right T */}
-      <line x1="50" y1="60" x2="82" y2="88" stroke={color} strokeWidth="8" strokeLinecap="round"/>
-      <line x1="71" y1="97" x2="93" y2="79" stroke={color} strokeWidth="8" strokeLinecap="round"/>
-    </svg>
-  );
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={file}
+      alt="Groviatech Solutions Limited"
+      width={Math.round(height * RATIO[variant])}
+      height={height}
+      className={className}
+    />
+  )
 }
