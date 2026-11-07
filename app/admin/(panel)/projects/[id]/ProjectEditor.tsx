@@ -1,9 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-import { useActionState, useState } from 'react'
+import { useActionState, useState, useTransition } from 'react'
 import { ConfirmButton } from '../../../_components/ConfirmButton'
 import { deleteProject, saveProject, type SaveState } from '../actions'
+import { runPageSpeed } from '../run-pagespeed'
 
 export type Project = {
   id: string
@@ -39,6 +40,31 @@ export function ProjectEditor({ project }: { project: Project }) {
   const setScore = (key: keyof typeof ps) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setPs((p) => ({ ...p, [key]: e.target.value }))
   const isNew = !project.id
+  const [running, startRun] = useTransition()
+  const [runNote, setRunNote] = useState<{ ok: boolean; text: string } | null>(null)
+
+  function fetchScores() {
+    setRunNote(null)
+    startRun(async () => {
+      const result = await runPageSpeed(domain, ps.device)
+      if (!result.ok) {
+        setRunNote({ ok: false, text: result.error })
+        return
+      }
+      setPs((current) => ({
+        ...current,
+        performance: String(result.scores.performance),
+        accessibility: String(result.scores.accessibility),
+        bestPractices: String(result.scores.bestPractices),
+        seo: String(result.scores.seo),
+        measuredOn: result.measuredOn,
+      }))
+      setRunNote({
+        ok: true,
+        text: `Filled in from ${result.runs} ${result.runs === 1 ? 'run' : 'runs'} (the middle result of each score). Check them, then press Save.`,
+      })
+    })
+  }
 
   return (
     <>
@@ -77,9 +103,19 @@ export function ProjectEditor({ project }: { project: Project }) {
         <fieldset className="adm-fieldset">
           <legend>Google PageSpeed scores (optional)</legend>
           <p className="adm-hint">
-            Run the site at pagespeed.web.dev, then copy the four scores from the same run. They show on the project card with the
-            device and the date, so only enter real results.
+            Press “Run PageSpeed now” to have Google test the site and fill in the scores. Or type scores you got yourself at
+            pagespeed.web.dev. They show on the project card with the device and the date, so only enter real results.
           </p>
+          <div className="adm-actions">
+            <button type="button" className="adm-btn adm-btn-quiet" onClick={fetchScores} disabled={running || !domain.trim()}>
+              {running ? 'Testing, about 30 seconds…' : 'Run PageSpeed now'}
+            </button>
+          </div>
+          {runNote && (
+            <p className={runNote.ok ? 'adm-muted' : 'adm-error'} role={runNote.ok ? 'status' : 'alert'}>
+              {runNote.text}
+            </p>
+          )}
           <div className="adm-grid4">
             <label>
               Performance

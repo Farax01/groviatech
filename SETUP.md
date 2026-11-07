@@ -26,7 +26,8 @@ Open **SQL Editor** and run these files in order:
 2. `supabase/seed.sql` to load the example pricing tiers.
 3. `supabase/content.sql` to add editable team members, projects, testimonials and the public image bucket.
 4. `supabase/content-seed.sql` to load the existing site content. Seed testimonials are unpublished until permission is confirmed.
-5. `supabase/hardening.sql` to apply the database-side lead submission rate limit.
+5. `supabase/pagespeed.sql` to add optional PageSpeed scores to projects.
+6. `supabase/hardening.sql` to apply the database-side lead submission rate limit.
 
 Pricing, team, projects and testimonials can then be edited from the admin. The image bucket only accepts JPG, PNG and WebP files up to 5 MB.
 
@@ -67,6 +68,11 @@ so if you lose your phone, the fix is to delete the factor from the Supabase das
 
 **Team, projects and testimonials.** Manage these under `/admin/team`, `/admin/projects` and `/admin/testimonials`. Published
 changes appear on the public pages; project screenshots and team photos are uploaded to the `site-images` bucket.
+
+**PageSpeed tests.** Add a Google PageSpeed Insights API key as `PAGESPEED_API_KEY` in `.env.local` and in your deployment's
+environment variables. In Google Cloud, enable the PageSpeed Insights API for the key's project. The project editor's
+**Run PageSpeed now** button fills in the scores for the selected device; review them and press **Save** to store them. Without
+the key, scores can still be entered manually.
 
 **Pricing API helper.** For another page that needs live tiers, use `getPublishedTiers()` from `lib/pricing.ts`:
 

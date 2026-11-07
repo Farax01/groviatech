@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import { requireAdmin } from '@/lib/admin-auth'
 import { ProjectEditor, type Project } from './ProjectEditor'
 
+export const maxDuration = 60
 
 export default async function EditProjectPage({ params }: { params: Promise<{ id: string }> }) {
   const { supabase } = await requireAdmin()
