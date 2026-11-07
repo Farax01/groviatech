@@ -42,7 +42,7 @@ export const QUOTE_NOTES = [
   },
   {
     title: 'How you pay',
-    body: 'You pay 50% to start the work and 50% on delivery. Prices are in US dollars.',
+    body: 'You pay 50% to start the work and 50% on delivery.',
   },
   {
     title: 'Between tiers',
@@ -72,7 +72,7 @@ export const FAQ = [
   },
   {
     q: 'How do payments work?',
-    a: 'You pay 50% to start and 50% on delivery, in US dollars. You get the written quote before you pay anything.',
+    a: 'You pay 50% to start and 50% on delivery. You get the written quote before you pay anything.',
   },
   {
     q: 'What happens after I book a free audit?',

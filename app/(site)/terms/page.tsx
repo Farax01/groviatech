@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 /*
  * A plain-language draft that follows the business decisions made so far: written quotes, 50% to start and 50% on delivery,
- * US dollars, and written rules before any security testing.
+ * and written rules before any security testing.
  * It returns a 404 until TERMS_PUBLISHED is true in shared-content.ts. Have a lawyer read it first, and settle the
  * liability and governing-law section, which is a placeholder because those choices are not yours to guess.
  */
@@ -27,7 +27,7 @@ const SECTIONS: { h: string; p: string; placeholder?: boolean }[] = [
   },
   {
     h: 'Payment.',
-    p: 'We ask for half to start and half on delivery. Prices are in US dollars unless your quote says otherwise.',
+    p: 'We ask for half to start and half on delivery. Your written quote states the price and how it is paid.',
   },
   {
     h: 'Security testing.',

@@ -10,12 +10,24 @@ const clean = (v: unknown, max: number) =>
  * `website` is a honeypot: hide it in the form; bots fill it in, people don't.
  */
 export async function POST(req: Request) {
-  // Only accept posts from this site's own pages, and refuse oversized bodies before reading them.
+  // Behind a proxy, the request URL's host may differ from the host the visitor used.
   const origin = req.headers.get('origin')
   if (origin) {
+    const lower = (value: string | null | undefined) => (value ?? '').split(',')[0].trim().toLowerCase()
+    let originHost = ''
     try {
-      if (new URL(origin).host !== new URL(req.url).host) return NextResponse.json({ error: 'Not allowed.' }, { status: 403 })
-    } catch {
+      originHost = new URL(origin).host.toLowerCase()
+    } catch {}
+    const allowed = new Set([
+      lower(req.headers.get('x-forwarded-host')),
+      lower(req.headers.get('host')),
+      new URL(req.url).host.toLowerCase(),
+    ])
+    try {
+      if (process.env.NEXT_PUBLIC_SITE_URL) allowed.add(new URL(process.env.NEXT_PUBLIC_SITE_URL).host.toLowerCase())
+    } catch {}
+    if (!originHost || !allowed.has(originHost)) {
+      console.warn('leads: blocked a post from another origin:', originHost || '(none)')
       return NextResponse.json({ error: 'Not allowed.' }, { status: 403 })
     }
   }
@@ -37,11 +49,13 @@ export async function POST(req: Request) {
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))
     return NextResponse.json({ error: 'Enter a valid email address.' }, { status: 400 })
 
-  const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    { auth: { persistSession: false } },
-  )
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  if (!supabaseUrl || !supabaseKey) {
+    console.error('leads: NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY is not set on the server')
+    return NextResponse.json({ error: 'We couldn’t send your message. Please email us directly.' }, { status: 500 })
+  }
+  const supabase = createClient(supabaseUrl, supabaseKey, { auth: { persistSession: false } })
 
   // No .select() here: visitors can insert leads but are not allowed to read them back.
   const { error } = await supabase.from('leads').insert({
@@ -54,6 +68,8 @@ export async function POST(req: Request) {
   })
 
   if (error) {
+    // Log the provider error, but never any lead details.
+    console.error('leads: insert failed:', error.code, error.message)
     // supabase/hardening.sql makes the database refuse a flood of submissions.
     if (error.message.includes('too_many_leads'))
       return NextResponse.json(

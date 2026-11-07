@@ -43,7 +43,9 @@ export function PricingExplorer({ tiers, initialTrack = 'web_dev' }: { tiers: Ti
 
   function pick(next: Track) {
     setTrack(next)
-    window.history.replaceState(null, '', `?track=${next}`)
+    const url = new URL(window.location.href)
+    url.searchParams.set('track', next)
+    window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`)
   }
 
   const copy = TRACK_COPY[track]
@@ -56,8 +58,8 @@ export function PricingExplorer({ tiers, initialTrack = 'web_dev' }: { tiers: Ti
           <div className="pr-hero-text">
             <h1>Secure websites, and the security testing behind them</h1>
             <p>
-              Fixed prices for building a site that is safe to run, and for testing the one you already have. Pick what
-              you need.
+              Plans for building a site that is safe to run, and for testing the one you already have. Pick what you
+              need and we send a fixed, written quote.
             </p>
           </div>
 

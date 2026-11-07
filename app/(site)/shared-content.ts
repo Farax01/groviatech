@@ -7,7 +7,7 @@
 export const SITE = {
   legalName: 'Groviatech Solutions Limited',
   email: 'groviatechh@gmail.com',
-  location: 'Lagos, Nigeria',
+  location: 'Nigeria',
 }
 
 export type Person = {
@@ -158,7 +158,7 @@ export const DATA_POINTS = [
 export const FAQ = [
   {
     q: 'Why work with a team based in Nigeria?',
-    a: 'We are based in Lagos, Nigeria, and we work with clients globally. You get a written quote and a signed agreement before any work starts, you pay 50% to begin, and the other 50% is due on delivery.',
+    a: 'We are based in Nigeria, and we work with clients globally. You get a written quote and a signed agreement before any work starts, you pay 50% to begin, and the other 50% is due on delivery.',
   },
   {
     q: 'Do I need a new website to get security help?',
@@ -178,7 +178,7 @@ export const FAQ = [
   },
   {
     q: 'How do payments work?',
-    a: 'You pay 50% to start and 50% on delivery, in US dollars, after you have the written quote.',
+    a: 'You pay 50% to start and 50% on delivery, after you have the written quote.',
   },
   {
     q: 'What happens after I book a free audit?',

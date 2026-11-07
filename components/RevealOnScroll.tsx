@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
+import './blue-theme.css'
 
 /**
  * Sections marked data-reveal fade in and rise a few pixels, once, as they scroll into view.

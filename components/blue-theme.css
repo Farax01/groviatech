@@ -1,0 +1,21 @@
+/* Blue accents for buttons, page openings, highlights and footer. */
+html .btn-solid { background: var(--blue); border-color: var(--blue); color: #fff; }
+html .btn-solid:hover { background: var(--blue-deep); border-color: var(--blue-deep); }
+html .btn-light { color: var(--blue); }
+html .btn:not(.btn-solid):not(.btn-light):not(.btn-soft):not(.btn-ghost):hover { border-color: var(--blue); background: var(--blue-soft); }
+
+html .hm-hero { padding-block: clamp(1rem, 3vw, 2rem) clamp(2.5rem, 5vw, 4rem); }
+html .hm-hero > .wrap { background: var(--blue-soft); border-radius: var(--r-md); padding: clamp(2.5rem, 7vw, 5rem) clamp(1.25rem, 5vw, 3rem); }
+html .hm-hero .hm-lede, html .hm-hero .hm-where { color: var(--blue-deep); }
+
+html .mq-list li { color: var(--blue); }
+html .mq-list li::after { background: var(--blue-soft-2); }
+html .hm-num span:first-child, html .risk-num { color: var(--blue); }
+html .hm-tags li { color: var(--blue); }
+html .hm-steps li:not(:last-child)::after { background-image: linear-gradient(var(--blue), var(--blue)); }
+html .read-bar div { background: var(--blue); }
+html .tier-feat li::after { border-color: var(--blue); }
+
+html .hm-close .wrap, html .pr-final .wrap { background: var(--blue); }
+html .hm-close .hm-lead, html .pr-final p { color: #dce8f5; }
+html .foot { background: var(--blue-deep); }
