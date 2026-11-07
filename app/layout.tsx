@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   description: 'Secure websites and security testing for small businesses and AI startups.',
   openGraph: { siteName: 'Groviatech', type: 'website', locale: 'en_US' },
   twitter: { card: 'summary_large_image' },
+  verification: { google: 'CFJp-7z9dhzKrzi7wnIgrzPF4MLNUdcqLBDeIgPq094' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

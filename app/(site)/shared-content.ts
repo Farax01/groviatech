@@ -129,9 +129,9 @@ export const TESTIMONIALS = [
 export const NDA_NOTE =
   'We can’t show you real reports. Our clients’ security results are covered by signed NDAs, so the example here is invented.'
 
-export const AVAILABILITY = { show: false, text: 'Booking security tests for December' }
+export const AVAILABILITY = { show: true, text: 'Booking security tests for December' }
 
-export const TERMS_PUBLISHED = false
+export const TERMS_PUBLISHED = true
 
 export const AUDIT_STEPS = [
   { title: 'Tell us about your site', body: 'Send us the form: your site or app, and what worries you about it.' },
