@@ -22,7 +22,7 @@ The admin area is part of this app at `/admin`. Its dashboard, lead inbox, prici
 
 To configure it:
 
-1. Copy the workspace-level `..\.env.example` to `.env.local` in this folder and set `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` from your Supabase project. Do not use a service-role key in the app.
+1. Copy `.env.example` to `.env.local` in this folder and set `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` from your Supabase project. Do not use a service-role key in the app.
 2. In Supabase SQL Editor, run `supabase/schema.sql`, `supabase/seed.sql`, `supabase/content.sql`, `supabase/content-seed.sql`, `supabase/pagespeed.sql` and `supabase/hardening.sql`, in that order.
 3. Create an account in Supabase Auth. Add its user ID to `public.admin_users` from SQL Editor, for example:
 

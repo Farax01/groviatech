@@ -126,6 +126,7 @@ export async function updateLeadAction(formData: FormData) {
     .from('leads')
     .update({ status: status as LeadStatus, notes: notes || null })
     .eq('id', id)
+    .is('deleted_at', null)
     .select('id')
     .maybeSingle()
   if (error) {
@@ -134,6 +135,66 @@ export async function updateLeadAction(formData: FormData) {
   }
   if (!data) redirect('/admin/leads?error=missing')
   redirect('/admin/leads?updated=1')
+}
+
+export async function moveLeadToTrashAction(formData: FormData) {
+  const { supabase } = await requireAdminAction()
+  const id = getText(formData, 'id')
+  if (!/^[0-9a-f-]{36}$/i.test(id)) redirect('/admin/leads?error=invalid')
+
+  const { data, error } = await supabase
+    .from('leads')
+    .update({ deleted_at: new Date().toISOString() })
+    .eq('id', id)
+    .is('deleted_at', null)
+    .select('id')
+    .maybeSingle()
+  if (error) {
+    console.error('Could not move lead to trash:', error.message)
+    redirect('/admin/leads?error=trash')
+  }
+  if (!data) redirect('/admin/leads?error=missing')
+  redirect('/admin/leads?trashed=1')
+}
+
+export async function restoreLeadAction(formData: FormData) {
+  const { supabase } = await requireAdminAction()
+  const id = getText(formData, 'id')
+  if (!/^[0-9a-f-]{36}$/i.test(id)) redirect('/admin/leads?view=trash&error=invalid')
+
+  const { data, error } = await supabase
+    .from('leads')
+    .update({ deleted_at: null })
+    .eq('id', id)
+    .not('deleted_at', 'is', null)
+    .select('id')
+    .maybeSingle()
+  if (error) {
+    console.error('Could not restore lead:', error.message)
+    redirect('/admin/leads?view=trash&error=restore')
+  }
+  if (!data) redirect('/admin/leads?view=trash&error=missing')
+  redirect('/admin/leads?restored=1')
+}
+
+export async function permanentlyDeleteLeadAction(formData: FormData) {
+  const { supabase } = await requireAdminAction()
+  const id = getText(formData, 'id')
+  if (!/^[0-9a-f-]{36}$/i.test(id)) redirect('/admin/leads?view=trash&error=invalid')
+
+  const { data, error } = await supabase
+    .from('leads')
+    .delete()
+    .eq('id', id)
+    .not('deleted_at', 'is', null)
+    .select('id')
+    .maybeSingle()
+  if (error) {
+    console.error('Could not permanently delete lead:', error.message)
+    redirect('/admin/leads?view=trash&error=delete')
+  }
+  if (!data) redirect('/admin/leads?view=trash&error=missing')
+  redirect('/admin/leads?view=trash&deleted=1')
 }
 
 export async function savePricingTierAction(formData: FormData) {

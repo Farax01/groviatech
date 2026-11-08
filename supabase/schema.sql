@@ -80,11 +80,13 @@ create table public.leads (
   message text check (char_length(message) <= 4000),
   source text not null default 'website' check (char_length(source) <= 60),
   status public.lead_status not null default 'new',
-  notes text check (char_length(notes) <= 4000)
+  notes text check (char_length(notes) <= 4000),
+  deleted_at timestamptz
 );
 create trigger leads_touch before update on public.leads
   for each row execute function public.touch_updated_at();
 create index leads_status_created_idx on public.leads (status, created_at desc);
+create index leads_deleted_created_idx on public.leads (deleted_at, created_at desc);
 alter table public.leads enable row level security;
 
 -- Visitors can submit a lead but never read, change or set its status.

@@ -28,6 +28,9 @@ Open **SQL Editor** and run these files in order:
 4. `supabase/content-seed.sql` to load the existing site content. Seed testimonials are unpublished until permission is confirmed.
 5. `supabase/pagespeed.sql` to add optional PageSpeed scores to projects.
 6. `supabase/hardening.sql` to apply the database-side lead submission rate limit.
+7. `supabase/leads-trash.sql` to enable soft-deleting and restoring leads.
+
+If the main schema has already been applied to your existing Supabase project, run `supabase/leads-trash.sql` once in SQL Editor before using the Leads page.
 
 Pricing, team, projects and testimonials can then be edited from the admin. The image bucket only accepts JPG, PNG and WebP files up to 5 MB.
 
@@ -51,7 +54,7 @@ select id, 'owner' from auth.users where email = 'YOUR-EMAIL';
 This folder is a complete Next.js 16 project. In a terminal, change to the folder containing this `SETUP.md` and `package.json` (the project root), then:
 
 1. Run `npm install`.
-2. Copy the workspace-level `..\.env.example` to `.env.local` and replace the example values with your Supabase Project URL and anon / publishable key.
+2. Copy `.env.example` to `.env.local` and replace the example values with your Supabase Project URL and anon / publishable key.
 3. Run `npm run dev` and open `http://localhost:3000/admin/login`.
 
 If you are adding these admin features to a different existing Next.js project instead, copy `app/`, `lib/` and `proxy.ts` into that project's root. If it uses a `src/` folder, put them in `src/` instead. Merge `app/api/leads` and `app/admin` with any existing `app/` folder. On **Next.js 15 or earlier**, rename `proxy.ts` to `middleware.ts` and the function `proxy` to `middleware`.
@@ -106,6 +109,13 @@ await fetch("/api/leads", {
 
 Add a hidden input named `website` to the form (CSS-hidden, `tabindex="-1"`). Real people leave it empty, and bots fill it in.
 This replaces the mailto step in your pricing builder, so every request lands in `/admin/leads`.
+New enquiries are also emailed to `LEAD_NOTIFICATION_EMAIL` with the visitor's address set as Reply-To. To enable email:
+
+1. Create a Resend account and an API key in its dashboard.
+2. Add `RESEND_API_KEY`, `LEAD_NOTIFICATION_EMAIL`, and `LEADS_FROM_EMAIL` to `.env.local` and your deployment environment. Keep `RESEND_API_KEY` private; do not use a `NEXT_PUBLIC_` prefix.
+3. For testing, `onboarding@resend.dev` can send only to the email address associated with your Resend account. To notify a different inbox or send in production, verify a domain in Resend and set `LEADS_FROM_EMAIL` to an address on that domain.
+
+The recipient can reply directly to each notification; the reply will go to the visitor who submitted the form. If email delivery is not configured or fails, the lead is still saved in `/admin/leads`, and the visitor is told the email notification did not go through.
 
 ## 9. Check it's locked down
 

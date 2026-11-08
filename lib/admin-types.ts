@@ -12,4 +12,5 @@ export type AdminLead = {
   source: string
   status: LeadStatus
   notes: string | null
+  deleted_at: string | null
 }

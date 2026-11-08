@@ -10,12 +10,13 @@ export const instant = false
 export default async function AdminHomePage() {
   const { supabase, user, role } = await requireAdmin()
   const [newLeads, totalLeads, publishedTiers, recentLeads] = await Promise.all([
-    supabase.from('leads').select('id', { count: 'exact', head: true }).eq('status', 'new'),
-    supabase.from('leads').select('id', { count: 'exact', head: true }),
+    supabase.from('leads').select('id', { count: 'exact', head: true }).eq('status', 'new').is('deleted_at', null),
+    supabase.from('leads').select('id', { count: 'exact', head: true }).is('deleted_at', null),
     supabase.from('pricing_tiers').select('id', { count: 'exact', head: true }).eq('published', true),
     supabase
       .from('leads')
-      .select('id, created_at, name, email, company, interest, message, source, status, notes')
+      .select('id, created_at, name, email, company, interest, message, source, status, notes, deleted_at')
+      .is('deleted_at', null)
       .order('created_at', { ascending: false })
       .limit(5)
       .returns<AdminLead[]>(),
@@ -48,7 +49,7 @@ export default async function AdminHomePage() {
         </Link>
         <Link className="adm-stat" href="/admin/leads">
           <strong>{totalLeads.count ?? 0}</strong>
-          <span>Total leads</span>
+          <span>Active leads</span>
         </Link>
         <Link className="adm-stat" href="/admin/pricing">
           <strong>{publishedTiers.count ?? 0}</strong>

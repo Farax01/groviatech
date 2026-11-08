@@ -1,3 +1,4 @@
+/* Case study pages: facts row, what we built, results panel. Uses the site's tokens. */
 .cs-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem 2rem; margin: 2rem 0 0; }
 .cs-facts div { border-top: 1px solid var(--hairline); padding-top: 0.9rem; }
 .cs-facts dt { font-size: 0.8rem; font-weight: 600; color: var(--muted-strong); }
@@ -17,3 +18,5 @@
 .cs-hero h1 { margin-inline: 0; max-width: 20ch; font-size: clamp(2.25rem, 5.4vw, 3.75rem); }
 .cs-hero .hm-lede { margin-inline: 0; max-width: 54ch; }
 .cs-hero .hm-row { margin-top: 1.5rem; }
+
+.cs-note { max-width: 62ch; color: var(--muted-strong); font-size: 0.9rem; }

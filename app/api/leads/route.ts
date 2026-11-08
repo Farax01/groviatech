@@ -4,6 +4,66 @@ import { createClient } from '@supabase/supabase-js'
 const clean = (v: unknown, max: number) =>
   typeof v === 'string' ? v.trim().slice(0, max) : ''
 
+async function notifyTeam({
+  name,
+  email,
+  company,
+  interest,
+  message,
+}: {
+  name: string
+  email: string
+  company: string
+  interest: string
+  message: string
+}): Promise<boolean> {
+  const apiKey = process.env.RESEND_API_KEY
+  if (!apiKey) {
+    console.error('leads: RESEND_API_KEY is not set; the lead was saved without an email notification')
+    return false
+  }
+
+  const notificationEmail = process.env.LEAD_NOTIFICATION_EMAIL ?? 'groviatechh@gmail.com'
+  const fromEmail = process.env.LEADS_FROM_EMAIL ?? 'onboarding@resend.dev'
+  const subjectName = name.replace(/[\r\n]+/g, ' ')
+  const text = [
+    `New website enquiry from ${name}`,
+    '',
+    `Name: ${name}`,
+    `Email: ${email}`,
+    `Company: ${company || 'Not provided'}`,
+    `Interest: ${interest || 'Not provided'}`,
+    '',
+    'Message:',
+    message || 'Not provided',
+  ].join('\n')
+
+  try {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: ['Bearer', apiKey].join(' '),
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: fromEmail,
+        to: [notificationEmail],
+        reply_to: email,
+        subject: `New website enquiry: ${subjectName}`,
+        text,
+      }),
+    })
+    if (!response.ok) {
+      console.error('leads: Resend email notification failed with status:', response.status)
+      return false
+    }
+    return true
+  } catch (error) {
+    console.error('leads: could not reach Resend:', error instanceof Error ? error.message : 'unknown error')
+    return false
+  }
+}
+
 /**
  * Public endpoint for the contact and audit forms.
  * POST JSON: { name, email, company?, interest?, message?, source?, website? }
@@ -81,5 +141,13 @@ export async function POST(req: Request) {
       { status: 500 },
     )
   }
-  return NextResponse.json({ ok: true })
+
+  const notificationSent = await notifyTeam({
+    name,
+    email,
+    company: clean(body.company, 160),
+    interest: clean(body.interest, 120),
+    message: clean(body.message, 4000),
+  })
+  return NextResponse.json({ ok: true, notificationSent })
 }

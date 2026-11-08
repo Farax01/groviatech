@@ -5,7 +5,7 @@ import { SITE } from '../shared-content'
 
 export function ContactForm() {
   const [interest, setInterest] = useState('')
-  const [status, setStatus] = useState<'idle' | 'sending' | 'done'>('idle')
+  const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'saved_without_notification'>('idle')
   const [error, setError] = useState('')
 
   useEffect(() => {
@@ -35,17 +35,29 @@ export function ContactForm() {
       }),
     }).catch(() => null)
 
-    if (res?.ok) return setStatus('done')
+    if (res?.ok) {
+      const data = await res.json()
+      return setStatus(data.notificationSent ? 'done' : 'saved_without_notification')
+    }
     const data = await res?.json().catch(() => null)
     setError(data?.error ?? `We couldn’t send your request. Check your connection and try again, or email ${SITE.email}.`)
     setStatus('idle')
   }
 
-  if (status === 'done') {
+  if (status === 'done' || status === 'saved_without_notification') {
     return (
       <div className="ct-done" role="status">
-        <h2>We have your request</h2>
-        <p>We will reply by email with next steps.</p>
+        {status === 'done' ? (
+          <>
+            <h2>We have your request</h2>
+            <p>We have notified our team and will reply by email with next steps.</p>
+          </>
+        ) : (
+          <>
+            <h2>Your request is saved</h2>
+            <p>We could not email our team. Please contact us directly at <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+          </>
+        )}
       </div>
     )
   }

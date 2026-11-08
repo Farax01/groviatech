@@ -150,6 +150,14 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
         )
       )}
 
+      {study.disclaimer && (
+        <section className="hm-act">
+          <div className="wrap">
+            <p className="cs-note">{study.disclaimer}</p>
+          </div>
+        </section>
+      )}
+
       <ClosingCta heading="Want a site that works as hard as this one?" />
     </>
   )
